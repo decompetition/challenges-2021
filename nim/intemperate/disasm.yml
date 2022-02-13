@@ -1,0 +1,1459 @@
+"NimMainModule":
+  "asm": |
+    NimMainModule:
+      endbr64
+      push    r15
+      push    r14
+      push    r13
+      push    r12
+      push    rbp
+      push    rbx
+      sub     rsp, 0x6d8
+      mov     rax, fs:[0x28]
+      mov     [rsp+0x6c8], rax
+      xor     eax, eax
+      lea     rax, [mem1]; "source"
+      mov     [rsp+0x38], rax
+      lea     rax, [mem2]; "/mnt/source.nim"
+      mov     [rsp+0x48], rax
+      mov     [rsp+0x40], 0
+      mov     [rsp+0x50], 0
+      mov     rdx, [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw]
+      test    rdx, rdx
+      je      block5
+    block1:
+      movzx   eax, [rdx+0x22]
+      add     eax, 1
+      movsx   rax, ax
+    block2:
+      mov     [rsp+0x52], ax
+      mov     [rsp+0x30], rdx
+      lea     rdx, [rsp+0x30]
+      mov     [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw], rdx
+      cmp     ax, 0x7d0
+      je      block6
+    block3:
+      lea     rdi, [TM__2lQWYPc4hWuvSK7bVeWxSA_3]
+      call    nimRegisterGlobalMarker
+      lea     rdi, [TM__2lQWYPc4hWuvSK7bVeWxSA_11]
+      call    nimRegisterGlobalMarker
+      lea     rdi, [TM__2lQWYPc4hWuvSK7bVeWxSA_12]
+      call    nimRegisterGlobalMarker
+      mov     rax, [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw]
+      mov     [rsp+0x20], rax
+      lea     rbx, [mem2]; "/mnt/source.nim"
+      mov     [rsp+0x48], rbx
+      mov     [rsp+0x40], 0xa
+      lea     rdx, [map__j78Wp9cLXY2ly9cMLkiF2FIA]
+      mov     esi, 3
+      lea     rdi, [TM__2lQWYPc4hWuvSK7bVeWxSA_4]; "P6\u0002"
+      call    toTable__FuuEOSEKpdeUOLLdPqYMlA
+      mov     [rsp+0x40], 0xc
+      mov     [rsp+0x48], rbx
+      call    paramCount__LYkRnwMk6UXTCs9c59cPvZsQ
+      cmp     rax, 2
+      je      block7
+    block4:
+      mov     [rsp+0x40], 0xd
+      lea     rbx, [mem2]; "/mnt/source.nim"
+      mov     [rsp+0x48], rbx
+      mov     esi, 1
+      lea     rdi, [TM__2lQWYPc4hWuvSK7bVeWxSA_8]
+      call    echoBinSafe
+      mov     [rsp+0x40], 0xe
+      mov     [rsp+0x48], rbx
+      mov     edi, 1
+      call    exit@plt.sec
+    block5:
+      mov     eax, 0
+      jmp     block2
+    block6:
+      call    callDepthLimitReached__mMRdr4sgmnykA9aWeM9aDZlw
+      jmp     block3
+    block7:
+      mov     [rsp+0x40], 0x10
+      mov     [rsp+0x48], rbx
+      mov     [rsp+0x6a8], 0
+      mov     rax, [excHandler__rqLlY5bs9atDw2OXYqJEn5g]
+      mov     [rsp+0x5d0], rax
+      lea     rax, [rsp+0x5d0]
+      mov     [excHandler__rqLlY5bs9atDw2OXYqJEn5g], rax
+      lea     rdi, [rsp+0x5e0]
+      call    _setjmp@plt.sec
+      endbr64
+      movsxd  r13, eax
+      mov     [rsp+0x5d8], r13
+      test    r13, r13
+      jne     block210
+    block8:
+      mov     [rsp+0x40], 0x11
+      lea     rbx, [mem2]; "/mnt/source.nim"
+      mov     [rsp+0x48], rbx
+      mov     edi, 1
+      call    paramStr__T0ST6UXXTEqaiXY9akIayng
+      mov     rdi, rax
+      call    nsuParseFloat
+      movsd   [value__Lnyu5mISnMjlOwakO6xgjg], xmm0
+      mov     [rsp+0x40], 0x12
+      mov     [rsp+0x48], rbx
+      mov     edi, 2
+      call    paramStr__T0ST6UXXTEqaiXY9akIayng
+      mov     rsi, rax
+      lea     rdi, [map__j78Wp9cLXY2ly9cMLkiF2FIA]
+      call    X5BX5D___iAbiWs1biH0YFGlpCu2Qxw
+      movdqu  xmm2, [rax]
+      movups  [args__c1sky3zUXG9bcdOlYTL9cQnQ], xmm2
+      movsd   xmm0, [value__Lnyu5mISnMjlOwakO6xgjg]
+      addsd   xmm0, [mem3]
+      divsd   xmm0, [args__c1sky3zUXG9bcdOlYTL9cQnQ]
+      movsd   [kelvin__ekExsm4eZxvVJIZx6Ozqtw], xmm0
+      mov     [rsp+0x40], 0x29a
+      lea     rbx, [mem4]; "/usr/lib/nim/pure/collections..."
+      mov     [rsp+0x48], rbx
+      mov     rdi, [map__j78Wp9cLXY2ly9cMLkiF2FIA]
+      mov     rsi, [mem5]
+      call    len__lMR0JeoEyn56xzHKDUj9b9aQ
+      mov     [rsp], rax
+      mov     [rsp+0x40], 0x29b
+      mov     [rsp+0x48], rbx
+      mov     rax, [map__j78Wp9cLXY2ly9cMLkiF2FIA]
+      test    rax, rax
+      je      block11
+    block9:
+      mov     r15, [rax]
+      sub     r15, 1
+    block10:
+      lea     rax, [mem6]; "/usr/lib/nim/system.nim"
+      mov     [rsp+0x48], rax
+      mov     [rsp+0x40], 0xa97
+      mov     rbx, r13
+      jmp     block115
+    block11:
+      mov     r15, -1
+      jmp     block10
+    block12:
+      mov     rax, [excHandler__rqLlY5bs9atDw2OXYqJEn5g]
+      mov     rax, [rax]
+      mov     [excHandler__rqLlY5bs9atDw2OXYqJEn5g], rax
+    block13:
+      cmp     [rsp+0x5d8], 0
+      jne     block224
+    block14:
+      mov     rax, [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw]
+      mov     rax, [rax]
+      mov     [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw], rax
+      mov     rax, [rsp+0x6c8]
+      xor     rax, fs:[0x28]
+      jne     block225
+    block15:
+      add     rsp, 0x6d8
+      pop     rbx
+      pop     rbp
+      pop     r12
+      pop     r13
+      pop     r14
+      pop     r15
+      ret
+    block16:
+      mov     edx, 0
+      jmp     block118
+    block17:
+      mov     rsi, -1
+      jmp     block121
+    block18:
+      mov     rax, r13
+      jmp     block124
+    block19:
+      call    callDepthLimitReached__mMRdr4sgmnykA9aWeM9aDZlw
+      jmp     block125
+    block20:
+      mov     edx, 0
+      jmp     block128
+    block21:
+      mov     rsi, -1
+      jmp     block131
+    block22:
+      mov     rax, r13
+      jmp     block135
+    block23:
+      call    callDepthLimitReached__mMRdr4sgmnykA9aWeM9aDZlw
+      jmp     block136
+    block24:
+      mov     rax, r13
+      jmp     block138
+    block25:
+      call    callDepthLimitReached__mMRdr4sgmnykA9aWeM9aDZlw
+      jmp     block139
+    block26:
+      mov     rax, r13
+      jmp     block141
+    block27:
+      call    callDepthLimitReached__mMRdr4sgmnykA9aWeM9aDZlw
+      jmp     block142
+    block28:
+      mov     rax, r13
+      jmp     block145
+    block29:
+      mov     [rsp+0x130], 0xc3
+      lea     rax, [mem7]; "/usr/lib/nim/system/gc.nim"
+      mov     [rsp+0x138], rax
+      mov     rsi, r14
+      lea     rdi, [mem8]
+      call    addZCT__Y66tOYFjgwJ0k4aLz4bc0Q
+      mov     rax, [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw]
+      mov     rax, [rax]
+      mov     [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw], rax
+    block30:
+      mov     rax, [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw]
+      mov     rax, [rax]
+      mov     [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw], rax
+      mov     rax, [rax]
+      mov     [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw], rax
+    block31:
+      mov     [rsp+0x40], 0x29d
+      lea     rax, [mem4]; "/usr/lib/nim/pure/collections..."
+      mov     [rsp+0x48], rax
+      mov     rax, [map__j78Wp9cLXY2ly9cMLkiF2FIA]
+      test    rax, rax
+      je      block147
+    block32:
+      mov     rdx, [rax]
+    block33:
+      cmp     rbp, rdx
+      jb      block37
+    block34:
+      test    rax, rax
+      je      block148
+    block35:
+      mov     rsi, [rax]
+      sub     rsi, 1
+    block36:
+      mov     rdi, rbx
+      call    raiseIndexError2
+    block37:
+      lea     rax, [rbx+1]
+      shl     rax, 5
+      add     rax, [map__j78Wp9cLXY2ly9cMLkiF2FIA]
+      movdqu  xmm1, [rax]
+      movups  [pair__bAuSaN02CiZV31Y4fvwnUg], xmm1
+      lea     rax, [mem2]; "/mnt/source.nim"
+      mov     [rsp+0x48], rax
+      movsd   xmm0, [kelvin__ekExsm4eZxvVJIZx6Ozqtw]
+      mulsd   xmm0, [pair__bAuSaN02CiZV31Y4fvwnUg]
+      subsd   xmm0, [mem9]
+      movsd   [val__rrYqd1cwD5q2o41QTmhSVQ], xmm0
+      mov     [rsp+0x40], 0x17
+      mov     [rsp+0x5c8], 0
+      lea     rax, [mem10]; "asgnRef"
+      mov     [rsp+0x158], rax
+      lea     rax, [mem7]; "/usr/lib/nim/system/gc.nim"
+      mov     [rsp+0x168], rax
+      mov     [rsp+0x160], 0
+      mov     [rsp+0x170], 0
+      mov     rdx, [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw]
+      test    rdx, rdx
+      je      block149
+    block38:
+      movzx   eax, [rdx+0x22]
+      add     eax, 1
+      movsx   rax, ax
+    block39:
+      mov     [rsp+0x172], ax
+      mov     [rsp+0x150], rdx
+      lea     rdx, [rsp+0x150]
+      mov     [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw], rdx
+      cmp     ax, 0x7d0
+      je      block150
+    block40:
+      lea     rax, [mem7]; "/usr/lib/nim/system/gc.nim"
+      mov     [rsp+0x168], rax
+      mov     [rsp+0x160], 0xef
+      mov     r12, [fmtRes__uXBZHKdDg6Dqcia3aPA80A]
+      test    r12, r12
+      je      block49
+    block41:
+      lea     rcx, [mem11]; "usrToCell"
+      mov     [rsp+0x188], rcx
+      mov     [rsp+0x198], rax
+      mov     [rsp+0x190], 0
+      mov     [rsp+0x1a0], 0
+      mov     rdx, [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw]
+      test    rdx, rdx
+      je      block151
+    block42:
+      movzx   eax, [rdx+0x22]
+      add     eax, 1
+      movsx   rax, ax
+    block43:
+      mov     [rsp+0x1a2], ax
+      mov     [rsp+0x180], rdx
+      lea     rdx, [rsp+0x180]
+      mov     [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw], rdx
+      cmp     ax, 0x7d0
+      je      block152
+    block44:
+      mov     [rsp+0x190], 0x81
+      lea     rax, [mem7]; "/usr/lib/nim/system/gc.nim"
+      mov     [rsp+0x198], rax
+      lea     r14, [r12-0x10]
+      mov     rdx, [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw]
+      mov     rdx, [rdx]
+      mov     [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw], rdx
+      lea     rcx, [mem12]; "decRef"
+      mov     [rsp+0x1b8], rcx
+      mov     [rsp+0x1c8], rax
+      mov     [rsp+0x1c0], 0
+      mov     [rsp+0x1d0], 0
+      test    rdx, rdx
+      je      block153
+    block45:
+      movzx   eax, [rdx+0x22]
+      add     eax, 1
+      movsx   rax, ax
+    block46:
+      mov     [rsp+0x1d2], ax
+      mov     [rsp+0x1b0], rdx
+      lea     rdx, [rsp+0x1b0]
+      mov     [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw], rdx
+      cmp     ax, 0x7d0
+      je      block154
+    block47:
+      mov     [rsp+0x1c0], 0xc8
+      lea     rdx, [mem7]; "/usr/lib/nim/system/gc.nim"
+      mov     [rsp+0x1c8], rdx
+      mov     rax, [r12-0x10]
+      sub     rax, 8
+      mov     [r12-0x10], rax
+      mov     [rsp+0x1c0], 0xc9
+      mov     [rsp+0x1c8], rdx
+      cmp     [r12-0x10], 7
+      jbe     block155
+    block48:
+      mov     rax, [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw]
+      mov     rax, [rax]
+      mov     [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw], rax
+    block49:
+      mov     [rsp+0x160], 0xf0
+      lea     r14, [mem7]; "/usr/lib/nim/system/gc.nim"
+      mov     [rsp+0x168], r14
+      mov     [fmtRes__uXBZHKdDg6Dqcia3aPA80A], 0
+      mov     rax, [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw]
+      mov     rax, [rax]
+      mov     [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw], rax
+      mov     [rsp+0x40], 0x17
+      lea     rax, [mem2]; "/mnt/source.nim"
+      mov     [rsp+0x48], rax
+      mov     edi, 0x25
+      call    rawNewString
+      mov     r12, rax
+      lea     rax, [mem10]; "asgnRef"
+      mov     [rsp+0x218], rax
+      mov     [rsp+0x228], r14
+      mov     [rsp+0x220], 0
+      mov     [rsp+0x230], 0
+      mov     rdx, [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw]
+      test    rdx, rdx
+      je      block161
+    block50:
+      movzx   eax, [rdx+0x22]
+      add     eax, 1
+      movsx   rax, ax
+    block51:
+      mov     [rsp+0x232], ax
+      mov     [rsp+0x210], rdx
+      lea     rdx, [rsp+0x210]
+      mov     [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw], rdx
+      cmp     ax, 0x7d0
+      je      block162
+    block52:
+      mov     [rsp+0x220], 0xee
+      lea     rax, [mem7]; "/usr/lib/nim/system/gc.nim"
+      mov     [rsp+0x228], rax
+      test    r12, r12
+      je      block60
+    block53:
+      lea     rcx, [mem11]; "usrToCell"
+      mov     [rsp+0x248], rcx
+      mov     [rsp+0x258], rax
+      mov     [rsp+0x250], 0
+      mov     [rsp+0x260], 0
+      mov     rdx, [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw]
+      test    rdx, rdx
+      je      block163
+    block54:
+      movzx   eax, [rdx+0x22]
+      add     eax, 1
+      movsx   rax, ax
+    block55:
+      mov     [rsp+0x262], ax
+      mov     [rsp+0x240], rdx
+      lea     rdx, [rsp+0x240]
+      mov     [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw], rdx
+      cmp     ax, 0x7d0
+      je      block164
+    block56:
+      mov     [rsp+0x250], 0x81
+      lea     rax, [mem7]; "/usr/lib/nim/system/gc.nim"
+      mov     [rsp+0x258], rax
+      mov     rdx, [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw]
+      mov     rdx, [rdx]
+      mov     [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw], rdx
+      lea     rcx, [mem13]; "incRef"
+      mov     [rsp+0x278], rcx
+      mov     [rsp+0x288], rax
+      mov     [rsp+0x280], 0
+      mov     [rsp+0x290], 0
+      test    rdx, rdx
+      je      block165
+    block57:
+      movzx   eax, [rdx+0x22]
+      add     eax, 1
+      movsx   rax, ax
+    block58:
+      mov     [rsp+0x292], ax
+      mov     [rsp+0x270], rdx
+      lea     rdx, [rsp+0x270]
+      mov     [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw], rdx
+      cmp     ax, 0x7d0
+      je      block166
+    block59:
+      mov     [rsp+0x280], 0xb7
+      lea     rax, [mem7]; "/usr/lib/nim/system/gc.nim"
+      mov     [rsp+0x288], rax
+      mov     rax, [r12-0x10]
+      add     rax, 8
+      mov     [r12-0x10], rax
+      mov     rax, [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw]
+      mov     rax, [rax]
+      mov     [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw], rax
+    block60:
+      mov     [rsp+0x220], 0xef
+      lea     rax, [mem7]; "/usr/lib/nim/system/gc.nim"
+      mov     [rsp+0x228], rax
+      mov     r14, [fmtRes__uXBZHKdDg6Dqcia3aPA80A]
+      test    r14, r14
+      je      block69
+    block61:
+      lea     rcx, [mem11]; "usrToCell"
+      mov     [rsp+0x2a8], rcx
+      mov     [rsp+0x2b8], rax
+      mov     [rsp+0x2b0], 0
+      mov     [rsp+0x2c0], 0
+      mov     rdx, [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw]
+      test    rdx, rdx
+      je      block167
+    block62:
+      movzx   eax, [rdx+0x22]
+      add     eax, 1
+      movsx   rax, ax
+    block63:
+      mov     [rsp+0x2c2], ax
+      mov     [rsp+0x2a0], rdx
+      lea     rdx, [rsp+0x2a0]
+      mov     [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw], rdx
+      cmp     ax, 0x7d0
+      je      block168
+    block64:
+      mov     [rsp+0x2b0], 0x81
+      lea     rax, [mem7]; "/usr/lib/nim/system/gc.nim"
+      mov     [rsp+0x2b8], rax
+      lea     rcx, [r14-0x10]
+      mov     [rsp+8], rcx
+      mov     rdx, [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw]
+      mov     rdx, [rdx]
+      mov     [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw], rdx
+      lea     rcx, [mem12]; "decRef"
+      mov     [rsp+0x2d8], rcx
+      mov     [rsp+0x2e8], rax
+      mov     [rsp+0x2e0], 0
+      mov     [rsp+0x2f0], 0
+      test    rdx, rdx
+      je      block169
+    block65:
+      movzx   eax, [rdx+0x22]
+      add     eax, 1
+      movsx   rax, ax
+    block66:
+      mov     [rsp+0x2f2], ax
+      mov     [rsp+0x2d0], rdx
+      lea     rdx, [rsp+0x2d0]
+      mov     [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw], rdx
+      cmp     ax, 0x7d0
+      je      block170
+    block67:
+      mov     [rsp+0x2e0], 0xc8
+      lea     rdx, [mem7]; "/usr/lib/nim/system/gc.nim"
+      mov     [rsp+0x2e8], rdx
+      mov     rax, [r14-0x10]
+      sub     rax, 8
+      mov     [r14-0x10], rax
+      mov     [rsp+0x2e0], 0xc9
+      mov     [rsp+0x2e8], rdx
+      cmp     [r14-0x10], 7
+      jbe     block171
+    block68:
+      mov     rax, [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw]
+      mov     rax, [rax]
+      mov     [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw], rax
+    block69:
+      mov     [rsp+0x220], 0xf0
+      lea     r14, [mem7]; "/usr/lib/nim/system/gc.nim"
+      mov     [rsp+0x228], r14
+      mov     [fmtRes__uXBZHKdDg6Dqcia3aPA80A], r12
+      mov     rax, [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw]
+      mov     rax, [rax]
+      mov     [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw], rax
+      mov     esi, 2
+      mov     rdi, r12
+      call    resizeString
+      mov     r12, rax
+      lea     rax, [mem10]; "asgnRef"
+      mov     [rsp+0x338], rax
+      mov     [rsp+0x348], r14
+      mov     [rsp+0x340], 0
+      mov     [rsp+0x350], 0
+      mov     rdx, [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw]
+      test    rdx, rdx
+      je      block177
+    block70:
+      movzx   eax, [rdx+0x22]
+      add     eax, 1
+      movsx   rax, ax
+    block71:
+      mov     [rsp+0x352], ax
+      mov     [rsp+0x330], rdx
+      lea     rdx, [rsp+0x330]
+      mov     [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw], rdx
+      cmp     ax, 0x7d0
+      je      block178
+    block72:
+      mov     [rsp+0x340], 0xee
+      lea     rax, [mem7]; "/usr/lib/nim/system/gc.nim"
+      mov     [rsp+0x348], rax
+      test    r12, r12
+      je      block80
+    block73:
+      lea     rcx, [mem11]; "usrToCell"
+      mov     [rsp+0x368], rcx
+      mov     [rsp+0x378], rax
+      mov     [rsp+0x370], 0
+      mov     [rsp+0x380], 0
+      mov     rdx, [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw]
+      test    rdx, rdx
+      je      block179
+    block74:
+      movzx   eax, [rdx+0x22]
+      add     eax, 1
+      movsx   rax, ax
+    block75:
+      mov     [rsp+0x382], ax
+      mov     [rsp+0x360], rdx
+      lea     rdx, [rsp+0x360]
+      mov     [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw], rdx
+      cmp     ax, 0x7d0
+      je      block180
+    block76:
+      mov     [rsp+0x370], 0x81
+      lea     rax, [mem7]; "/usr/lib/nim/system/gc.nim"
+      mov     [rsp+0x378], rax
+      mov     rdx, [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw]
+      mov     rdx, [rdx]
+      mov     [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw], rdx
+      lea     rcx, [mem13]; "incRef"
+      mov     [rsp+0x398], rcx
+      mov     [rsp+0x3a8], rax
+      mov     [rsp+0x3a0], 0
+      mov     [rsp+0x3b0], 0
+      test    rdx, rdx
+      je      block181
+    block77:
+      movzx   eax, [rdx+0x22]
+      add     eax, 1
+      movsx   rax, ax
+    block78:
+      mov     [rsp+0x3b2], ax
+      mov     [rsp+0x390], rdx
+      lea     rdx, [rsp+0x390]
+      mov     [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw], rdx
+      cmp     ax, 0x7d0
+      je      block182
+    block79:
+      mov     [rsp+0x3a0], 0xb7
+      lea     rax, [mem7]; "/usr/lib/nim/system/gc.nim"
+      mov     [rsp+0x3a8], rax
+      mov     rax, [r12-0x10]
+      add     rax, 8
+      mov     [r12-0x10], rax
+      mov     rax, [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw]
+      mov     rax, [rax]
+      mov     [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw], rax
+    block80:
+      mov     [rsp+0x340], 0xef
+      lea     rax, [mem7]; "/usr/lib/nim/system/gc.nim"
+      mov     [rsp+0x348], rax
+      mov     r14, [fmtRes__uXBZHKdDg6Dqcia3aPA80A]
+      test    r14, r14
+      je      block89
+    block81:
+      lea     rcx, [mem11]; "usrToCell"
+      mov     [rsp+0x3c8], rcx
+      mov     [rsp+0x3d8], rax
+      mov     [rsp+0x3d0], 0
+      mov     [rsp+0x3e0], 0
+      mov     rdx, [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw]
+      test    rdx, rdx
+      je      block183
+    block82:
+      movzx   eax, [rdx+0x22]
+      add     eax, 1
+      movsx   rax, ax
+    block83:
+      mov     [rsp+0x3e2], ax
+      mov     [rsp+0x3c0], rdx
+      lea     rdx, [rsp+0x3c0]
+      mov     [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw], rdx
+      cmp     ax, 0x7d0
+      je      block184
+    block84:
+      mov     [rsp+0x3d0], 0x81
+      lea     rax, [mem7]; "/usr/lib/nim/system/gc.nim"
+      mov     [rsp+0x3d8], rax
+      lea     rcx, [r14-0x10]
+      mov     [rsp+0x10], rcx
+      mov     rdx, [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw]
+      mov     rdx, [rdx]
+      mov     [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw], rdx
+      lea     rcx, [mem12]; "decRef"
+      mov     [rsp+0x3f8], rcx
+      mov     [rsp+0x408], rax
+      mov     [rsp+0x400], 0
+      mov     [rsp+0x410], 0
+      test    rdx, rdx
+      je      block185
+    block85:
+      movzx   eax, [rdx+0x22]
+      add     eax, 1
+      movsx   rax, ax
+    block86:
+      mov     [rsp+0x412], ax
+      mov     [rsp+0x3f0], rdx
+      lea     rdx, [rsp+0x3f0]
+      mov     [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw], rdx
+      cmp     ax, 0x7d0
+      je      block186
+    block87:
+      mov     [rsp+0x400], 0xc8
+      lea     rdx, [mem7]; "/usr/lib/nim/system/gc.nim"
+      mov     [rsp+0x408], rdx
+      mov     rax, [r14-0x10]
+      sub     rax, 8
+      mov     [r14-0x10], rax
+      mov     [rsp+0x400], 0xc9
+      mov     [rsp+0x408], rdx
+      cmp     [r14-0x10], 7
+      jbe     block187
+    block88:
+      mov     rax, [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw]
+      mov     rax, [rax]
+      mov     [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw], rax
+    block89:
+      mov     [rsp+0x340], 0xf0
+      lea     r14, [mem7]; "/usr/lib/nim/system/gc.nim"
+      mov     [rsp+0x348], r14
+      mov     [fmtRes__uXBZHKdDg6Dqcia3aPA80A], r12
+      mov     rax, [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw]
+      mov     rax, [rax]
+      mov     [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw], rax
+      mov     rdx, [r12]
+      lea     rdx, [r12+rdx+0x10]
+      mov     [rdx], 0x203d
+      mov     [rdx+2], 0
+      add     [r12], 2
+      lea     rsi, [TM__2lQWYPc4hWuvSK7bVeWxSA_14]
+      movsd   xmm0, [val__rrYqd1cwD5q2o41QTmhSVQ]
+      lea     rdi, [fmtRes__uXBZHKdDg6Dqcia3aPA80A]
+      call    formatValue__uPFPMrUalNNBCBOiayvLcA
+      mov     esi, 1
+      mov     rdi, [fmtRes__uXBZHKdDg6Dqcia3aPA80A]
+      call    resizeString
+      mov     r12, rax
+      lea     rax, [mem10]; "asgnRef"
+      mov     [rsp+0x458], rax
+      mov     [rsp+0x468], r14
+      mov     [rsp+0x460], 0
+      mov     [rsp+0x470], 0
+      mov     rdx, [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw]
+      test    rdx, rdx
+      je      block193
+    block90:
+      movzx   eax, [rdx+0x22]
+      add     eax, 1
+      movsx   rax, ax
+    block91:
+      mov     [rsp+0x472], ax
+      mov     [rsp+0x450], rdx
+      lea     rdx, [rsp+0x450]
+      mov     [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw], rdx
+      cmp     ax, 0x7d0
+      je      block194
+    block92:
+      mov     [rsp+0x460], 0xee
+      lea     rax, [mem7]; "/usr/lib/nim/system/gc.nim"
+      mov     [rsp+0x468], rax
+      test    r12, r12
+      je      block100
+    block93:
+      lea     rdi, [mem11]; "usrToCell"
+      mov     [rsp+0x488], rdi
+      mov     [rsp+0x498], rax
+      mov     [rsp+0x490], 0
+      mov     [rsp+0x4a0], 0
+      mov     rdx, [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw]
+      test    rdx, rdx
+      je      block195
+    block94:
+      movzx   eax, [rdx+0x22]
+      add     eax, 1
+      movsx   rax, ax
+    block95:
+      mov     [rsp+0x4a2], ax
+      mov     [rsp+0x480], rdx
+      lea     rdx, [rsp+0x480]
+      mov     [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw], rdx
+      cmp     ax, 0x7d0
+      je      block196
+    block96:
+      mov     [rsp+0x490], 0x81
+      lea     rax, [mem7]; "/usr/lib/nim/system/gc.nim"
+      mov     [rsp+0x498], rax
+      mov     rdx, [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw]
+      mov     rdx, [rdx]
+      mov     [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw], rdx
+      lea     rsi, [mem13]; "incRef"
+      mov     [rsp+0x4b8], rsi
+      mov     [rsp+0x4c8], rax
+      mov     [rsp+0x4c0], 0
+      mov     [rsp+0x4d0], 0
+      test    rdx, rdx
+      je      block197
+    block97:
+      movzx   eax, [rdx+0x22]
+      add     eax, 1
+      movsx   rax, ax
+    block98:
+      mov     [rsp+0x4d2], ax
+      mov     [rsp+0x4b0], rdx
+      lea     rdx, [rsp+0x4b0]
+      mov     [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw], rdx
+      cmp     ax, 0x7d0
+      je      block198
+    block99:
+      mov     [rsp+0x4c0], 0xb7
+      lea     rax, [mem7]; "/usr/lib/nim/system/gc.nim"
+      mov     [rsp+0x4c8], rax
+      mov     rax, [r12-0x10]
+      add     rax, 8
+      mov     [r12-0x10], rax
+      mov     rax, [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw]
+      mov     rax, [rax]
+      mov     [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw], rax
+    block100:
+      mov     [rsp+0x460], 0xef
+      lea     rax, [mem7]; "/usr/lib/nim/system/gc.nim"
+      mov     [rsp+0x468], rax
+      mov     r14, [fmtRes__uXBZHKdDg6Dqcia3aPA80A]
+      test    r14, r14
+      je      block109
+    block101:
+      lea     rcx, [mem11]; "usrToCell"
+      mov     [rsp+0x4e8], rcx
+      mov     [rsp+0x4f8], rax
+      mov     [rsp+0x4f0], 0
+      mov     [rsp+0x500], 0
+      mov     rdx, [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw]
+      test    rdx, rdx
+      je      block199
+    block102:
+      movzx   eax, [rdx+0x22]
+      add     eax, 1
+      movsx   rax, ax
+    block103:
+      mov     [rsp+0x502], ax
+      mov     [rsp+0x4e0], rdx
+      lea     rdx, [rsp+0x4e0]
+      mov     [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw], rdx
+      cmp     ax, 0x7d0
+      je      block200
+    block104:
+      mov     [rsp+0x4f0], 0x81
+      lea     rax, [mem7]; "/usr/lib/nim/system/gc.nim"
+      mov     [rsp+0x4f8], rax
+      lea     rdi, [r14-0x10]
+      mov     [rsp+0x18], rdi
+      mov     rdx, [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw]
+      mov     rdx, [rdx]
+      mov     [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw], rdx
+      lea     rsi, [mem12]; "decRef"
+      mov     [rsp+0x518], rsi
+      mov     [rsp+0x528], rax
+      mov     [rsp+0x520], 0
+      mov     [rsp+0x530], 0
+      test    rdx, rdx
+      je      block201
+    block105:
+      movzx   eax, [rdx+0x22]
+      add     eax, 1
+      movsx   rax, ax
+    block106:
+      mov     [rsp+0x532], ax
+      mov     [rsp+0x510], rdx
+      lea     rdx, [rsp+0x510]
+      mov     [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw], rdx
+      cmp     ax, 0x7d0
+      je      block202
+    block107:
+      mov     [rsp+0x520], 0xc8
+      lea     rdx, [mem7]; "/usr/lib/nim/system/gc.nim"
+      mov     [rsp+0x528], rdx
+      mov     rax, [r14-0x10]
+      sub     rax, 8
+      mov     [r14-0x10], rax
+      mov     [rsp+0x520], 0xc9
+      mov     [rsp+0x528], rdx
+      cmp     [r14-0x10], 7
+      jbe     block203
+    block108:
+      mov     rax, [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw]
+      mov     rax, [rax]
+      mov     [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw], rax
+    block109:
+      mov     [rsp+0x460], 0xf0
+      lea     rax, [mem7]; "/usr/lib/nim/system/gc.nim"
+      mov     [rsp+0x468], rax
+      mov     [fmtRes__uXBZHKdDg6Dqcia3aPA80A], r12
+      mov     rax, [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw]
+      mov     rax, [rax]
+      mov     [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw], rax
+      mov     rdx, [r12]
+      mov     [r12+rdx+0x10], 0x20
+      add     [r12], 1
+      mov     edx, 0
+      mov     rsi, [u__BJTgK4QWxkUoxWVZDjWmMg]
+      lea     rdi, [fmtRes__uXBZHKdDg6Dqcia3aPA80A]
+      call    formatValue__3zjq9csYPBcIN7AqvyU5ZLA
+      mov     rdi, [fmtRes__uXBZHKdDg6Dqcia3aPA80A]
+      call    copyString
+      mov     [rsp+0x5c8], rax
+      lea     rdi, [rsp+0x5c8]
+      mov     esi, 1
+      call    echoBinSafe
+      mov     [rsp+0x40], 0x29e
+      lea     rax, [mem4]; "/usr/lib/nim/pure/collections..."
+      mov     [rsp+0x48], rax
+      mov     rdi, [map__j78Wp9cLXY2ly9cMLkiF2FIA]
+      mov     rsi, [mem5]
+      call    len__lMR0JeoEyn56xzHKDUj9b9aQ
+      cmp     [rsp], rax
+      je      block111
+    block110:
+      lea     rdi, [TM__2lQWYPc4hWuvSK7bVeWxSA_16]
+      call    failedAssertImpl__W9cjVocn1tjhW7p7xohJj6A
+    block111:
+      mov     [rsp+0x40], 0xa99
+      lea     rax, [mem6]; "/usr/lib/nim/system.nim"
+      mov     [rsp+0x48], rax
+      add     rbp, 1
+      xor     rbx, rbp
+      mov     rax, rbx
+      not     rax
+      shr     rax, 0x3f
+      test    rbx, rbx
+      jns     block113
+    block112:
+      mov     rax, rbp
+      xor     rax, -2
+      shr     rax, 0x3f
+    block113:
+      test    al, al
+      je      block209
+    block114:
+      mov     rbx, rbp
+    block115:
+      cmp     rbx, r15
+      jg      block12
+    block116:
+      lea     rax, [mem4]; "/usr/lib/nim/pure/collections..."
+      mov     [rsp+0x48], rax
+      mov     [rsp+0x40], 0x29c
+      mov     rax, [map__j78Wp9cLXY2ly9cMLkiF2FIA]
+      test    rax, rax
+      je      block16
+    block117:
+      mov     rdx, [rax]
+    block118:
+      mov     rbp, rbx
+      cmp     rbx, rdx
+      jb      block122
+    block119:
+      test    rax, rax
+      je      block17
+    block120:
+      mov     rsi, [rax]
+      sub     rsi, 1
+    block121:
+      mov     rdi, rbx
+      call    raiseIndexError2
+    block122:
+      mov     rax, rbx
+      shl     rax, 5
+      add     rax, [map__j78Wp9cLXY2ly9cMLkiF2FIA]
+      mov     r12, [rax+0x10]
+      lea     rax, [mem14]; "isFilled"
+      mov     [rsp+0x68], rax
+      lea     rax, [mem15]; "/usr/lib/nim/pure/collections..."
+      mov     [rsp+0x78], rax
+      mov     [rsp+0x70], 0
+      mov     [rsp+0x80], 0
+      mov     rdx, [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw]
+      test    rdx, rdx
+      je      block18
+    block123:
+      movzx   eax, [rdx+0x22]
+      add     eax, 1
+      movsx   rax, ax
+    block124:
+      mov     [rsp+0x82], ax
+      mov     [rsp+0x60], rdx
+      lea     rdx, [rsp+0x60]
+      mov     [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw], rdx
+      cmp     ax, 0x7d0
+      je      block19
+    block125:
+      mov     [rsp+0x70], 0x1b
+      lea     rax, [mem15]; "/usr/lib/nim/pure/collections..."
+      mov     [rsp+0x78], rax
+      mov     rax, [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw]
+      mov     rax, [rax]
+      mov     [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw], rax
+      test    r12, r12
+      je      block111
+    block126:
+      mov     [rsp+0x40], 0x15
+      lea     rax, [mem2]; "/mnt/source.nim"
+      mov     [rsp+0x48], rax
+      mov     rax, [map__j78Wp9cLXY2ly9cMLkiF2FIA]
+      test    rax, rax
+      je      block20
+    block127:
+      mov     rdx, [rax]
+    block128:
+      cmp     rbp, rdx
+      jb      block132
+    block129:
+      test    rax, rax
+      je      block21
+    block130:
+      mov     rsi, [rax]
+      sub     rsi, 1
+    block131:
+      mov     rdi, rbx
+      call    raiseIndexError2
+    block132:
+      mov     r12, [u__BJTgK4QWxkUoxWVZDjWmMg]
+      mov     rax, rbx
+      shl     rax, 5
+      add     rax, [map__j78Wp9cLXY2ly9cMLkiF2FIA]
+      mov     rdi, [rax+0x18]
+      call    copyStringRC1
+      mov     [u__BJTgK4QWxkUoxWVZDjWmMg], rax
+      test    r12, r12
+      je      block31
+    block133:
+      lea     rax, [mem16]; "nimGCunrefNoCycle"
+      mov     [rsp+0x98], rax
+      lea     rax, [mem7]; "/usr/lib/nim/system/gc.nim"
+      mov     [rsp+0xa8], rax
+      mov     [rsp+0xa0], 0
+      mov     [rsp+0xb0], 0
+      mov     rdx, [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw]
+      test    rdx, rdx
+      je      block22
+    block134:
+      movzx   eax, [rdx+0x22]
+      add     eax, 1
+      movsx   rax, ax
+    block135:
+      mov     [rsp+0xb2], ax
+      mov     [rsp+0x90], rdx
+      lea     rdx, [rsp+0x90]
+      mov     [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw], rdx
+      cmp     ax, 0x7d0
+      je      block23
+    block136:
+      mov     [rsp+0xa0], 0xe4
+      lea     rax, [mem7]; "/usr/lib/nim/system/gc.nim"
+      mov     [rsp+0xa8], rax
+      lea     rcx, [mem11]; "usrToCell"
+      mov     [rsp+0xc8], rcx
+      mov     [rsp+0xd8], rax
+      mov     [rsp+0xd0], 0
+      mov     [rsp+0xe0], 0
+      mov     rdx, [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw]
+      test    rdx, rdx
+      je      block24
+    block137:
+      movzx   eax, [rdx+0x22]
+      add     eax, 1
+      movsx   rax, ax
+    block138:
+      mov     [rsp+0xe2], ax
+      mov     [rsp+0xc0], rdx
+      lea     rdx, [rsp+0xc0]
+      mov     [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw], rdx
+      cmp     ax, 0x7d0
+      je      block25
+    block139:
+      mov     [rsp+0xd0], 0x81
+      lea     rax, [mem7]; "/usr/lib/nim/system/gc.nim"
+      mov     [rsp+0xd8], rax
+      lea     r14, [r12-0x10]
+      mov     rdx, [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw]
+      mov     rdx, [rdx]
+      mov     [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw], rdx
+      lea     rdi, [mem12]; "decRef"
+      mov     [rsp+0xf8], rdi
+      mov     [rsp+0x108], rax
+      mov     [rsp+0x100], 0
+      mov     [rsp+0x110], 0
+      test    rdx, rdx
+      je      block26
+    block140:
+      movzx   eax, [rdx+0x22]
+      add     eax, 1
+      movsx   rax, ax
+    block141:
+      mov     [rsp+0x112], ax
+      mov     [rsp+0xf0], rdx
+      lea     rdx, [rsp+0xf0]
+      mov     [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw], rdx
+      cmp     ax, 0x7d0
+      je      block27
+    block142:
+      mov     [rsp+0x100], 0xc8
+      lea     rdx, [mem7]; "/usr/lib/nim/system/gc.nim"
+      mov     [rsp+0x108], rdx
+      mov     rax, [r12-0x10]
+      sub     rax, 8
+      mov     [r12-0x10], rax
+      mov     [rsp+0x100], 0xc9
+      mov     [rsp+0x108], rdx
+      cmp     [r12-0x10], 7
+      ja      block30
+    block143:
+      mov     [rsp+0x100], 0xca
+      lea     rax, [mem17]; "rtlAddZCT"
+      mov     [rsp+0x128], rax
+      mov     [rsp+0x138], rdx
+      mov     [rsp+0x130], 0
+      mov     [rsp+0x140], 0
+      mov     rdx, [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw]
+      test    rdx, rdx
+      je      block28
+    block144:
+      movzx   eax, [rdx+0x22]
+      add     eax, 1
+      movsx   rax, ax
+    block145:
+      mov     [rsp+0x142], ax
+      mov     [rsp+0x120], rdx
+      lea     rdx, [rsp+0x120]
+      mov     [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw], rdx
+      cmp     ax, 0x7d0
+      jne     block29
+    block146:
+      call    callDepthLimitReached__mMRdr4sgmnykA9aWeM9aDZlw
+      jmp     block29
+    block147:
+      mov     edx, 0
+      jmp     block33
+    block148:
+      mov     rsi, -1
+      jmp     block36
+    block149:
+      mov     rax, r13
+      jmp     block39
+    block150:
+      call    callDepthLimitReached__mMRdr4sgmnykA9aWeM9aDZlw
+      jmp     block40
+    block151:
+      mov     rax, r13
+      jmp     block43
+    block152:
+      call    callDepthLimitReached__mMRdr4sgmnykA9aWeM9aDZlw
+      jmp     block44
+    block153:
+      mov     rax, r13
+      jmp     block46
+    block154:
+      call    callDepthLimitReached__mMRdr4sgmnykA9aWeM9aDZlw
+      jmp     block47
+    block155:
+      mov     [rsp+0x1c0], 0xca
+      lea     rax, [mem17]; "rtlAddZCT"
+      mov     [rsp+0x1e8], rax
+      mov     [rsp+0x1f8], rdx
+      mov     [rsp+0x1f0], 0
+      mov     [rsp+0x200], 0
+      mov     rdx, [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw]
+      test    rdx, rdx
+      je      block159
+    block156:
+      movzx   eax, [rdx+0x22]
+      add     eax, 1
+      movsx   rax, ax
+    block157:
+      mov     [rsp+0x202], ax
+      mov     [rsp+0x1e0], rdx
+      lea     rdx, [rsp+0x1e0]
+      mov     [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw], rdx
+      cmp     ax, 0x7d0
+      je      block160
+    block158:
+      mov     [rsp+0x1f0], 0xc3
+      lea     rax, [mem7]; "/usr/lib/nim/system/gc.nim"
+      mov     [rsp+0x1f8], rax
+      mov     rsi, r14
+      lea     rdi, [mem8]
+      call    addZCT__Y66tOYFjgwJ0k4aLz4bc0Q
+      mov     rax, [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw]
+      mov     rax, [rax]
+      mov     [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw], rax
+      jmp     block48
+    block159:
+      mov     rax, r13
+      jmp     block157
+    block160:
+      call    callDepthLimitReached__mMRdr4sgmnykA9aWeM9aDZlw
+      jmp     block158
+    block161:
+      mov     rax, r13
+      jmp     block51
+    block162:
+      call    callDepthLimitReached__mMRdr4sgmnykA9aWeM9aDZlw
+      jmp     block52
+    block163:
+      mov     rax, r13
+      jmp     block55
+    block164:
+      call    callDepthLimitReached__mMRdr4sgmnykA9aWeM9aDZlw
+      jmp     block56
+    block165:
+      mov     rax, r13
+      jmp     block58
+    block166:
+      call    callDepthLimitReached__mMRdr4sgmnykA9aWeM9aDZlw
+      jmp     block59
+    block167:
+      mov     rax, r13
+      jmp     block63
+    block168:
+      call    callDepthLimitReached__mMRdr4sgmnykA9aWeM9aDZlw
+      jmp     block64
+    block169:
+      mov     rax, r13
+      jmp     block66
+    block170:
+      call    callDepthLimitReached__mMRdr4sgmnykA9aWeM9aDZlw
+      jmp     block67
+    block171:
+      mov     [rsp+0x2e0], 0xca
+      lea     rax, [mem17]; "rtlAddZCT"
+      mov     [rsp+0x308], rax
+      mov     [rsp+0x318], rdx
+      mov     [rsp+0x310], 0
+      mov     [rsp+0x320], 0
+      mov     rdx, [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw]
+      test    rdx, rdx
+      je      block175
+    block172:
+      movzx   eax, [rdx+0x22]
+      add     eax, 1
+      movsx   rax, ax
+    block173:
+      mov     [rsp+0x322], ax
+      mov     [rsp+0x300], rdx
+      lea     rdx, [rsp+0x300]
+      mov     [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw], rdx
+      cmp     ax, 0x7d0
+      je      block176
+    block174:
+      mov     [rsp+0x310], 0xc3
+      lea     rax, [mem7]; "/usr/lib/nim/system/gc.nim"
+      mov     [rsp+0x318], rax
+      mov     rsi, [rsp+8]
+      lea     rdi, [mem8]
+      call    addZCT__Y66tOYFjgwJ0k4aLz4bc0Q
+      mov     rax, [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw]
+      mov     rax, [rax]
+      mov     [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw], rax
+      jmp     block68
+    block175:
+      mov     rax, r13
+      jmp     block173
+    block176:
+      call    callDepthLimitReached__mMRdr4sgmnykA9aWeM9aDZlw
+      jmp     block174
+    block177:
+      mov     rax, r13
+      jmp     block71
+    block178:
+      call    callDepthLimitReached__mMRdr4sgmnykA9aWeM9aDZlw
+      jmp     block72
+    block179:
+      mov     rax, r13
+      jmp     block75
+    block180:
+      call    callDepthLimitReached__mMRdr4sgmnykA9aWeM9aDZlw
+      jmp     block76
+    block181:
+      mov     rax, r13
+      jmp     block78
+    block182:
+      call    callDepthLimitReached__mMRdr4sgmnykA9aWeM9aDZlw
+      jmp     block79
+    block183:
+      mov     rax, r13
+      jmp     block83
+    block184:
+      call    callDepthLimitReached__mMRdr4sgmnykA9aWeM9aDZlw
+      jmp     block84
+    block185:
+      mov     rax, r13
+      jmp     block86
+    block186:
+      call    callDepthLimitReached__mMRdr4sgmnykA9aWeM9aDZlw
+      jmp     block87
+    block187:
+      mov     [rsp+0x400], 0xca
+      lea     rax, [mem17]; "rtlAddZCT"
+      mov     [rsp+0x428], rax
+      mov     [rsp+0x438], rdx
+      mov     [rsp+0x430], 0
+      mov     [rsp+0x440], 0
+      mov     rdx, [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw]
+      test    rdx, rdx
+      je      block191
+    block188:
+      movzx   eax, [rdx+0x22]
+      add     eax, 1
+      movsx   rax, ax
+    block189:
+      mov     [rsp+0x442], ax
+      mov     [rsp+0x420], rdx
+      lea     rdx, [rsp+0x420]
+      mov     [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw], rdx
+      cmp     ax, 0x7d0
+      je      block192
+    block190:
+      mov     [rsp+0x430], 0xc3
+      lea     rax, [mem7]; "/usr/lib/nim/system/gc.nim"
+      mov     [rsp+0x438], rax
+      mov     rsi, [rsp+0x10]
+      lea     rdi, [mem8]
+      call    addZCT__Y66tOYFjgwJ0k4aLz4bc0Q
+      mov     rax, [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw]
+      mov     rax, [rax]
+      mov     [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw], rax
+      jmp     block88
+    block191:
+      mov     rax, r13
+      jmp     block189
+    block192:
+      call    callDepthLimitReached__mMRdr4sgmnykA9aWeM9aDZlw
+      jmp     block190
+    block193:
+      mov     rax, r13
+      jmp     block91
+    block194:
+      call    callDepthLimitReached__mMRdr4sgmnykA9aWeM9aDZlw
+      jmp     block92
+    block195:
+      mov     rax, r13
+      jmp     block95
+    block196:
+      call    callDepthLimitReached__mMRdr4sgmnykA9aWeM9aDZlw
+      jmp     block96
+    block197:
+      mov     rax, r13
+      jmp     block98
+    block198:
+      call    callDepthLimitReached__mMRdr4sgmnykA9aWeM9aDZlw
+      jmp     block99
+    block199:
+      mov     rax, r13
+      jmp     block103
+    block200:
+      call    callDepthLimitReached__mMRdr4sgmnykA9aWeM9aDZlw
+      jmp     block104
+    block201:
+      mov     rax, r13
+      jmp     block106
+    block202:
+      call    callDepthLimitReached__mMRdr4sgmnykA9aWeM9aDZlw
+      jmp     block107
+    block203:
+      mov     [rsp+0x520], 0xca
+      lea     rax, [mem17]; "rtlAddZCT"
+      mov     [rsp+0x548], rax
+      mov     [rsp+0x558], rdx
+      mov     [rsp+0x550], 0
+      mov     [rsp+0x560], 0
+      mov     rdx, [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw]
+      test    rdx, rdx
+      je      block207
+    block204:
+      movzx   eax, [rdx+0x22]
+      add     eax, 1
+      movsx   rax, ax
+    block205:
+      mov     [rsp+0x562], ax
+      mov     [rsp+0x540], rdx
+      lea     rdx, [rsp+0x540]
+      mov     [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw], rdx
+      cmp     ax, 0x7d0
+      je      block208
+    block206:
+      mov     [rsp+0x550], 0xc3
+      lea     rax, [mem7]; "/usr/lib/nim/system/gc.nim"
+      mov     [rsp+0x558], rax
+      mov     rsi, [rsp+0x18]
+      lea     rdi, [mem8]
+      call    addZCT__Y66tOYFjgwJ0k4aLz4bc0Q
+      mov     rax, [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw]
+      mov     rax, [rax]
+      mov     [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw], rax
+      jmp     block108
+    block207:
+      mov     rax, r13
+      jmp     block205
+    block208:
+      call    callDepthLimitReached__mMRdr4sgmnykA9aWeM9aDZlw
+      jmp     block206
+    block209:
+      call    raiseOverflow
+      jmp     block114
+    block210:
+      mov     rax, [excHandler__rqLlY5bs9atDw2OXYqJEn5g]
+      mov     rax, [rax]
+      mov     [excHandler__rqLlY5bs9atDw2OXYqJEn5g], rax
+      mov     rax, [rsp+0x20]
+      mov     [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw], rax
+      lea     rbx, [mem18]; "getCurrentException"
+      mov     [rsp+0x578], rbx
+      lea     rbx, [mem6]; "/usr/lib/nim/system.nim"
+      mov     [rsp+0x588], rbx
+      mov     [rsp+0x580], 0
+      mov     [rsp+0x590], 0
+      test    rax, rax
+      je      block215
+    block211:
+      movzx   eax, [rax+0x22]
+      mov     [rsp+0x2e], ax
+      add     eax, 1
+      movsx   rax, ax
+    block212:
+      mov     [rsp+0x592], ax
+      mov     rbx, [rsp+0x20]
+      mov     [rsp+0x570], rbx
+      lea     rdx, [rsp+0x570]
+      mov     [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw], rdx
+      cmp     ax, 0x7d0
+      je      block216
+    block213:
+      mov     [rsp+0x580], 0xee0
+      lea     rax, [mem6]; "/usr/lib/nim/system.nim"
+      mov     [rsp+0x588], rax
+      mov     rax, [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw]
+      mov     rax, [rax]
+      mov     [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw], rax
+      lea     rsi, [NTI__t7nhKLvXTQS9cS8ByJU9bIag_]
+      mov     rax, [currException__9bVPeDJlYTi9bQApZpfH8wjg]
+      mov     rdi, [rax]
+      call    isObj
+      test    al, al
+      je      block217
+    block214:
+      mov     [rsp+0x5d8], 0
+      mov     [rsp+0x40], 0x1a
+      lea     rbx, [mem2]; "/mnt/source.nim"
+      mov     [rsp+0x48], rbx
+      mov     esi, 1
+      lea     rdi, [TM__2lQWYPc4hWuvSK7bVeWxSA_18]
+      call    echoBinSafe
+      mov     [rsp+0x40], 0x1b
+      mov     [rsp+0x48], rbx
+      mov     edi, 0xd4
+      call    exit@plt.sec
+    block215:
+      mov     eax, 0
+      jmp     block212
+    block216:
+      call    callDepthLimitReached__mMRdr4sgmnykA9aWeM9aDZlw
+      jmp     block213
+    block217:
+      lea     rax, [mem18]; "getCurrentException"
+      mov     [rsp+0x5a8], rax
+      lea     rax, [mem6]; "/usr/lib/nim/system.nim"
+      mov     [rsp+0x5b8], rax
+      mov     [rsp+0x5b0], 0
+      mov     [rsp+0x5c0], 0
+      mov     rdx, [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw]
+      test    rdx, rdx
+      je      block222
+    block218:
+      movzx   eax, [rdx+0x22]
+      add     eax, 1
+      movsx   rax, ax
+    block219:
+      mov     [rsp+0x5c2], ax
+      mov     [rsp+0x5a0], rdx
+      lea     rdx, [rsp+0x5a0]
+      mov     [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw], rdx
+      cmp     ax, 0x7d0
+      je      block223
+    block220:
+      mov     [rsp+0x5b0], 0xee0
+      lea     rax, [mem6]; "/usr/lib/nim/system.nim"
+      mov     [rsp+0x5b8], rax
+      mov     rax, [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw]
+      mov     rax, [rax]
+      mov     [framePtr__HRfVMH3jYeBJz6Q6X9b6Ptw], rax
+      lea     rsi, [NTI__yoNlBGx0D2tRizIdhQuENw_]
+      mov     rax, [currException__9bVPeDJlYTi9bQApZpfH8wjg]
+      mov     rdi, [rax]
+      call    isObj
+      test    al, al
+      je      block13
+    block221:
+      mov     [rsp+0x5d8], 0
+      mov     [rsp+0x40], 0x1d
+      lea     rbx, [mem2]; "/mnt/source.nim"
+      mov     [rsp+0x48], rbx
+      mov     esi, 1
+      lea     rdi, [TM__2lQWYPc4hWuvSK7bVeWxSA_20]
+      call    echoBinSafe
+      mov     [rsp+0x40], 0x1e
+      mov     [rsp+0x48], rbx
+      mov     edi, 0x20
+      call    exit@plt.sec
+    block222:
+      mov     eax, 0
+      jmp     block219
+    block223:
+      call    callDepthLimitReached__mMRdr4sgmnykA9aWeM9aDZlw
+      jmp     block220
+    block224:
+      call    reraiseException
+      jmp     block14
+    block225:
+      call    __stack_chk_fail@plt.sec

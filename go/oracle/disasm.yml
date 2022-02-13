@@ -1,0 +1,365 @@
+"main.main":
+  "asm": |
+    main.main:
+      mov     rcx, fs:[-8]
+      lea     rax, [rsp-0x110]
+      cmp     rax, [rcx+0x10]
+      jbe     block18
+    block1:
+      sub     rsp, 0x190
+      mov     [rsp+0x188], rbp
+      lea     rbp, [rsp+0x188]
+      xorps   xmm0, xmm0
+      movups  [rsp+0xc8], xmm0
+      lea     rax, [mem1]
+      mov     [rsp+0xc8], rax
+      lea     rcx, [mem2]; "I need your DOB, height, weig..."
+      mov     [rsp+0xd0], rcx
+      mov     rcx, [os.Stdout]
+      lea     rdx, [go.itab.*os.File,io.Writer]
+      mov     [rsp], rdx
+      mov     [rsp+8], rcx
+      lea     rcx, [rsp+0xc8]
+      mov     [rsp+0x10], rcx
+      mov     [rsp+0x18], 1
+      mov     [rsp+0x20], 1
+      call    fmt.Fprintln
+      mov     rax, [os.Stdin]
+      mov     [rsp+0xa0], rax
+      mov     [rsp+0x130], 0
+      lea     rdi, [rsp+0x138]
+      xorps   xmm0, xmm0
+      lea     rdi, [rdi-0x30]
+      mov     [rsp-0x10], rbp
+      lea     rbp, [rsp-0x10]
+      call    mem3
+      mov     rbp, [rbp]
+      lea     rcx, [mem4]
+      mov     [rsp], rcx
+      mov     [rsp+8], 0x1000
+      mov     [rsp+0x10], 0x1000
+      call    runtime.makeslice
+      mov     rax, [rsp+0x18]
+      mov     [rsp+0xd8], 0
+      lea     rdi, [rsp+0xe0]
+      xorps   xmm0, xmm0
+      lea     rdi, [rdi-0x30]
+      mov     [rsp-0x10], rbp
+      lea     rbp, [rsp-0x10]
+      call    mem3
+      mov     rbp, [rbp]
+      mov     [rsp+0xd8], rax
+      mov     [rsp+0xe0], 0x1000
+      mov     [rsp+0xe8], 0x1000
+      lea     rax, [go.itab.*os.File,io.Reader]
+      mov     [rsp+0xf0], rax
+      mov     rax, [rsp+0xa0]
+      mov     [rsp+0xf8], rax
+      mov     [rsp+0x120], -1
+      mov     [rsp+0x128], -1
+      mov     rax, [rsp+0xd8]
+      mov     [rsp+0x130], rax
+      lea     rdi, [rsp+0x138]
+      lea     rsi, [rsp+0xe0]
+      mov     [rsp-0x10], rbp
+      lea     rbp, [rsp-0x10]
+      call    mem5
+      mov     rbp, [rbp]
+      xor     eax, eax
+      xor     ecx, ecx
+      xor     edx, edx
+      xor     ebx, ebx
+      jmp     block3
+    block2:
+      mov     r8, [rsp+0x58]
+      lea     rax, [r8+1]
+      mov     rdx, rdi
+      mov     rbx, rsi
+    block3:
+      cmp     rax, 6
+      jge     block17
+    block4:
+      mov     [rsp+0x58], rax
+      mov     [rsp+0x68], rcx
+      mov     [rsp+0x98], rdx
+      mov     [rsp+0x70], rbx
+      lea     rax, [rsp+0x130]
+      mov     [rsp], rax
+      mov     [rsp+8], 0x3b
+      call    bufio.(*Reader).ReadBytes
+      mov     rax, [rsp+0x30]
+      mov     [rsp+0x80], rax
+      mov     rcx, [rsp+0x28]
+      mov     [rsp+0x60], rcx
+      mov     rdx, [rsp+0x20]
+      mov     rbx, [rsp+0x18]
+      mov     rsi, [rsp+0x10]
+      mov     [rsp], 0
+      mov     [rsp+8], rsi
+      mov     [rsp+0x10], rbx
+      mov     [rsp+0x18], rdx
+      call    runtime.slicebytetostring
+      mov     rax, [rsp+0x28]
+      mov     [rsp+0x50], rax
+      mov     rcx, [rsp+0x20]
+      mov     [rsp+0x88], rcx
+      mov     rdx, [rsp+0x60]
+      test    rdx, rdx
+      je      block8
+    block5:
+      je      block7
+    block6:
+      mov     rdx, [rdx+8]
+    block7:
+      xorps   xmm0, xmm0
+      movups  [rsp+0xb8], xmm0
+      mov     [rsp+0xb8], rdx
+      mov     rax, [rsp+0x80]
+      mov     [rsp+0xc0], rax
+      mov     rax, [os.Stdout]
+      lea     rcx, [go.itab.*os.File,io.Writer]
+      mov     [rsp], rcx
+      mov     [rsp+8], rax
+      lea     rax, [rsp+0xb8]
+      mov     [rsp+0x10], rax
+      mov     [rsp+0x18], 1
+      mov     [rsp+0x20], 1
+      call    fmt.Fprintln
+      mov     [rsp], 1
+      call    os.Exit
+    block8:
+      mov     rax, [rsp+0x50]
+      cmp     rax, 2
+      jl      block16
+    block9:
+      mov     rcx, [rsp+0x58]
+    block10:
+      mov     [rsp+0x58], rcx
+      mov     rdx, [rsp+0x88]
+      mov     [rsp], rdx
+      mov     [rsp+8], rax
+      lea     rax, [mem6]; ";<=?CLMNPSZ[\n\t]`hms + @ P [) ..."
+      mov     [rsp+0x10], rax
+      mov     [rsp+0x18], 1
+      call    strings.TrimRight
+      mov     rax, [rsp+0x68]
+      lea     rcx, [rax+1]
+      mov     rdx, [rsp+0x28]
+      mov     rbx, [rsp+0x20]
+      mov     rsi, [rsp+0x70]
+      cmp     rcx, rsi
+      ja      block15
+    block11:
+      mov     rdi, [rsp+0x98]
+    block12:
+      shl     rax, 4
+      mov     [rdi+rax+8], rdx
+      lea     rdx, [rdi+rax]
+      cmp     [runtime.writeBarrier], 0
+      jne     block14
+    block13:
+      mov     [rdi+rax], rbx
+      jmp     block2
+    block14:
+      mov     rax, rdi
+      mov     rdi, rdx
+      mov     r8, rax
+      mov     rax, rbx
+      call    runtime.gcWriteBarrier
+      mov     rdi, r8
+      jmp     block2
+    block15:
+      mov     [rsp+0x78], rdx
+      mov     [rsp+0x90], rbx
+      lea     rdx, [mem1]
+      mov     [rsp], rdx
+      mov     rbx, [rsp+0x98]
+      mov     [rsp+8], rbx
+      mov     [rsp+0x10], rax
+      mov     [rsp+0x18], rsi
+      mov     [rsp+0x20], rcx
+      call    runtime.growslice
+      mov     rdi, [rsp+0x28]
+      mov     rax, [rsp+0x30]
+      mov     rsi, [rsp+0x38]
+      lea     rcx, [rax+1]
+      mov     rax, [rsp+0x68]
+      mov     rdx, [rsp+0x78]
+      mov     rbx, [rsp+0x90]
+      jmp     block12
+    block16:
+      mov     rax, [rsp+0x58]
+      lea     rcx, [rax+1]
+      mov     [rsp], rcx
+      call    runtime.convT64
+      mov     rax, [rsp+8]
+      xorps   xmm0, xmm0
+      movups  [rsp+0xa8], xmm0
+      lea     rcx, [mem7]
+      mov     [rsp+0xa8], rcx
+      mov     [rsp+0xb0], rax
+      mov     rax, [os.Stdout]
+      lea     rdx, [go.itab.*os.File,io.Writer]
+      mov     [rsp], rdx
+      mov     [rsp+8], rax
+      lea     rax, [mem8]; "String number %v is empty, tr..."
+      mov     [rsp+0x10], rax
+      mov     [rsp+0x18], 0x2f
+      lea     rbx, [rsp+0xa8]
+      mov     [rsp+0x20], rbx
+      mov     [rsp+0x28], 1
+      mov     [rsp+0x30], 1
+      call    fmt.Fprintf
+      mov     rax, [rsp+0x58]
+      lea     rcx, [rax-1]
+      mov     rax, [rsp+0x50]
+      jmp     block10
+    block17:
+      mov     [rsp], rdx
+      mov     [rsp+8], rcx
+      mov     [rsp+0x10], rbx
+      call    main.predict
+      mov     rbp, [rsp+0x188]
+      add     rsp, 0x190
+      ret
+    block18:
+      call    runtime.morestack_noctxt
+      jmp     main.main
+    block19:
+      int3
+"main.predict":
+  "asm": |
+    main.predict:
+      mov     rcx, fs:[-8]
+      lea     rax, [rsp-0x10]
+      cmp     rax, [rcx+0x10]
+      jbe     block17
+    block1:
+      sub     rsp, 0x90
+      mov     [rsp+0x88], rbp
+      lea     rbp, [rsp+0x88]
+      mov     rax, [rsp+0xa0]
+      test    rax, rax
+      jle     block14
+    block2:
+      mov     rcx, [rsp+0x98]
+      xor     edx, edx
+      mov     ebx, 0xfeedbeef
+      jmp     block10
+    block3:
+      movsxd  r9, r9d
+      add     rbx, r9
+    block4:
+      cmp     r8, rsi
+      jge     block8
+    block5:
+      movzx   r9d, [rdi+r8]
+      cmp     r9d, 0x80
+      jge     block7
+    block6:
+      inc     r8
+      jmp     block3
+    block7:
+      mov     [rsp+0x48], rbx
+      mov     [rsp], rdi
+      mov     [rsp+8], rsi
+      mov     [rsp+0x10], r8
+      call    runtime.decoderune
+      mov     r9d, [rsp+0x18]
+      mov     r8, [rsp+0x20]
+      mov     rax, [rsp+0xa0]
+      mov     rcx, [rsp+0x60]
+      mov     rdx, [rsp+0x50]
+      mov     rbx, [rsp+0x48]
+      mov     rsi, [rsp+0x40]
+      mov     rdi, [rsp+0x58]
+      jmp     block3
+    block8:
+      inc     rdx
+      cmp     rdx, rax
+      jge     block11
+    block9:
+      add     rcx, 0x10
+    block10:
+      mov     [rsp+0x60], rcx
+      mov     [rsp+0x50], rdx
+      mov     rsi, [rcx+8]
+      mov     [rsp+0x40], rsi
+      mov     rdi, [rcx]
+      mov     [rsp+0x58], rdi
+      xor     r8d, r8d
+      jmp     block4
+    block11:
+      mov     [rsp+0x50], rbx
+      mov     rax, [math/rand.globalRand]
+      mov     [rsp], rax
+      mov     [rsp+8], rbx
+      call    math/rand.(*Rand).Seed
+      call    math/rand.Int
+      mov     rax, [rsp]
+      mov     rcx, [rsp+0x50]
+      add     rax, rcx
+      mov     rcx, [mem1]
+      test    rcx, rcx
+      je      block16
+    block12:
+      cqo
+      idiv    rcx
+      mov     [rsp+0x48], rdx
+      xorps   xmm0, xmm0
+      movups  [rsp+0x78], xmm0
+      lea     rcx, [mem2]
+      mov     [rsp+0x78], rcx
+      lea     rbx, [mem3]; "Your prediction:"
+      mov     [rsp+0x80], rbx
+      mov     rbx, [os.Stdout]
+      lea     rsi, [go.itab.*os.File,io.Writer]
+      mov     [rsp], rsi
+      mov     [rsp+8], rbx
+      lea     rbx, [rsp+0x78]
+      mov     [rsp+0x10], rbx
+      mov     [rsp+0x18], 1
+      mov     [rsp+0x20], 1
+      call    fmt.Fprintln
+      mov     rcx, [mem1]
+      mov     rdx, [main.predictions]
+      mov     rax, [rsp+0x48]
+      cmp     rax, rcx
+      jae     block15
+    block13:
+      shl     rax, 4
+      mov     rcx, [rdx+rax+8]
+      mov     rax, [rdx+rax]
+      mov     [rsp], rax
+      mov     [rsp+8], rcx
+      call    runtime.convTstring
+      mov     rax, [rsp+0x10]
+      xorps   xmm0, xmm0
+      movups  [rsp+0x68], xmm0
+      lea     rcx, [mem2]
+      mov     [rsp+0x68], rcx
+      mov     [rsp+0x70], rax
+      mov     rax, [os.Stdout]
+      lea     rcx, [go.itab.*os.File,io.Writer]
+      mov     [rsp], rcx
+      mov     [rsp+8], rax
+      lea     rax, [rsp+0x68]
+      mov     [rsp+0x10], rax
+      mov     [rsp+0x18], 1
+      mov     [rsp+0x20], 1
+      call    fmt.Fprintln
+      mov     rbp, [rsp+0x88]
+      add     rsp, 0x90
+      ret
+    block14:
+      mov     ebx, 0xfeedbeef
+      jmp     block11
+    block15:
+      call    runtime.panicIndex
+    block16:
+      call    runtime.panicdivide
+    block17:
+      call    runtime.morestack_noctxt
+      jmp     main.predict
+    block18:
+      int3

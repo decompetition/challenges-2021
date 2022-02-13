@@ -1,0 +1,357 @@
+"_ZN6source4mainE":
+  "asm": |
+    _ZN6source4mainE:
+      sub     rsp, 0x108
+      mov     [rsp+0xf6], 0
+      mov     [rsp+0xf7], 0
+      lea     rdi, [rsp+0x40]
+      call    [mem1]
+      lea     rdi, [rsp+0x28]
+      lea     rsi, [rsp+0x40]
+      mov     edx, 1
+      call    _ZN4core4iter6traits8iterator8Iterator3nthE
+      jmp     block1
+    block1:
+      mov     [rsp+0xf7], 1
+      lea     rsi, [mem2]; "what    Someu128Zeromut  <= t..."
+      lea     rdi, [rsp+0x60]
+      mov     edx, 4
+      call    _ZN47_$LT$str$u20$as$u20$alloc..string..ToString$GT$9to_stringE
+      jmp     block2
+    block2:
+      mov     [rsp+0xf7], 0
+      lea     rdi, [rsp+0x10]
+      lea     rsi, [rsp+0x28]
+      lea     rdx, [rsp+0x60]
+      call    _ZN4core6option15Option$LT$T$GT$9unwrap_orE
+      jmp     block3
+    block3:
+      mov     [rsp+0xf6], 1
+      mov     [rsp+0xf7], 0
+      lea     rdi, [rsp+0x40]
+      call    _ZN4core3ptr35drop_in_place$LT$std..env..Args$GT$E
+      jmp     block4
+    block4:
+      mov     [rsp+0xf6], 0
+      mov     rcx, [rsp+0x20]
+      mov     [rsp+0xa0], rcx
+      movups  xmm0, [rsp+0x10]
+      movaps  [rsp+0x90], xmm0
+      lea     rdi, [rsp+0x78]
+      lea     rsi, [rsp+0x90]
+      call    _ZN6source4stepE
+      jmp     block5
+    block5:
+      lea     rax, [rsp+0x78]
+      mov     [rsp+0xe8], rax
+      mov     rdi, [rsp+0xe8]
+      lea     rsi, [_ZN60_$LT$alloc..string..String$u20$as$u20$core..fmt..Display$GT$3fmtE]
+      call    _ZN4core3fmt10ArgumentV13newE
+      mov     rcx, rax
+      mov     rsi, rdx
+      mov     [rsp], rsi
+      mov     [rsp+8], rcx
+      jmp     block6
+    block6:
+      mov     rcx, [rsp]
+      mov     rdx, [rsp+8]
+      mov     [rsp+0xd8], rdx
+      mov     [rsp+0xe0], rcx
+      lea     rsi, [mem3]
+      lea     rdi, [rsp+0xa8]
+      mov     edx, 2
+      lea     rcx, [rsp+0xd8]
+      mov     r8d, 1
+      call    _ZN4core3fmt9Arguments6new_v1E
+      jmp     block7
+    block7:
+      mov     rcx, [mem4]
+      lea     rdi, [rsp+0xa8]
+      call    rcx
+      jmp     block8
+    block8:
+      lea     rdi, [rsp+0x78]
+      call    _ZN4core3ptr42drop_in_place$LT$alloc..string..String$GT$E
+      jmp     block9
+    block9:
+      mov     [rsp+0xf6], 0
+      add     rsp, 0x108
+      ret
+    block10:
+      lea     rdi, [rsp+0x78]
+      call    _ZN4core3ptr42drop_in_place$LT$alloc..string..String$GT$E
+      jmp     block14
+    block11:
+      lea     rdi, [rsp+0x40]
+      call    _ZN4core3ptr35drop_in_place$LT$std..env..Args$GT$E
+    block12:
+      mov     rdi, [rsp+0xf8]
+      call    _Unwind_Resume@plt
+      ud2
+    block13:
+      lea     rdi, [rsp+0x10]
+      call    _ZN4core3ptr42drop_in_place$LT$alloc..string..String$GT$E
+      jmp     block12
+    block14:
+      test    [rsp+0xf6], 1
+      jne     block13
+    block15:
+      jmp     block12
+    block16:
+      lea     rdi, [rsp+0x28]
+      call    _ZN4core3ptr70drop_in_place$LT$core..option..Option$LT$alloc..string..String$GT$$GT$E
+      jmp     block11
+    block17:
+      test    [rsp+0xf7], 1
+      jne     block16
+    block18:
+      jmp     block11
+    block19:
+      mov     rcx, rax
+      mov     eax, edx
+      mov     [rsp+0xf8], rcx
+      mov     [rsp+0x100], eax
+      jmp     block11
+    block20:
+      mov     rcx, rax
+      mov     eax, edx
+      mov     [rsp+0xf8], rcx
+      mov     [rsp+0x100], eax
+      jmp     block17
+    block21:
+      mov     rcx, rax
+      mov     eax, edx
+      mov     [rsp+0xf8], rcx
+      mov     [rsp+0x100], eax
+      jmp     block14
+    block22:
+      mov     rcx, rax
+      mov     eax, edx
+      mov     [rsp+0xf8], rcx
+      mov     [rsp+0x100], eax
+      jmp     block10
+    block23:
+      int3
+"_ZN6source4stepE":
+  "asm": |
+    _ZN6source4stepE:
+      sub     rsp, 0x1b8
+      mov     [rsp+0x58], rsi
+      mov     rax, rdi
+      mov     rdi, [rsp+0x58]
+      mov     [rsp+0x60], rax
+      mov     [rsp+0x68], rax
+      mov     [rsp+0x1a7], 0
+      call    _ZN65_$LT$alloc..string..String$u20$as$u20$core..ops..deref..Deref$GT$5derefE
+      mov     rcx, rax
+      mov     rsi, rdx
+      mov     [rsp+0x70], rsi
+      mov     [rsp+0x78], rcx
+      jmp     block1
+    block1:
+      mov     rsi, [rsp+0x70]
+      mov     rdi, [rsp+0x78]
+      call    _ZN4core3str21_$LT$impl$u20$str$GT$5charsE
+      mov     rcx, rax
+      mov     rsi, rdx
+      mov     [rsp+0x48], rsi
+      mov     [rsp+0x50], rcx
+      jmp     block2
+    block2:
+      mov     rdx, [rsp+0x48]
+      mov     rsi, [rsp+0x50]
+      lea     rdi, [rsp+0x80]
+      call    _ZN4core4iter6traits8iterator8Iterator7collectE
+      jmp     block3
+    block3:
+      mov     [rsp+0x1a7], 1
+      lea     rdi, [rsp+0x80]
+      call    _ZN5alloc3vec16Vec$LT$T$C$A$GT$3popE
+      mov     ecx, eax
+      mov     [rsp+0x44], ecx
+      jmp     block4
+    block4:
+      mov     eax, [rsp+0x44]
+      mov     [rsp+0x98], eax
+      mov     eax, [rsp+0x98]
+      add     eax, 0xffef0000
+      setne   al
+      movzx   eax, al
+      je      block7
+    block5:
+      jmp     block6
+    block6:
+      jmp     block9
+    block7:
+      mov     rdi, [rsp+0x60]
+      lea     rsi, [mem1]; "\n"
+      xor     ecx, ecx
+      mov     edx, ecx
+      call    _ZN5alloc3str56_$LT$impl$u20$alloc..borrow..ToOwned$u20$for$u20$str$GT$8to_ownedE
+      jmp     block29
+    block8:
+      ud2
+    block9:
+      mov     ecx, [rsp+0x98]
+      mov     [rsp+0x9c], ecx
+      mov     [rsp+0x1a7], 0
+      mov     rcx, [rsp+0x90]
+      mov     [rsp+0x190], rcx
+      movups  xmm0, [rsp+0x80]
+      movaps  [rsp+0x180], xmm0
+      lea     rdi, [rsp+0x160]
+      lea     rsi, [rsp+0x180]
+      call    _ZN90_$LT$alloc..vec..Vec$LT$T$C$A$GT$$u20$as$u20$core..iter..traits..collect..IntoIterator$GT$9into_iterE
+      jmp     block10
+    block10:
+      lea     rdi, [rsp+0x148]
+      lea     rsi, [rsp+0x160]
+      call    _ZN4core4iter6traits8iterator8Iterator7collectE
+      jmp     block11
+    block11:
+      lea     rdi, [rsp+0x130]
+      lea     rsi, [rsp+0x148]
+      call    _ZN6source4stepE
+      jmp     block12
+    block12:
+      lea     rax, [rsp+0x9c]
+      mov     [rsp+0x120], rax
+      lea     rax, [rsp+0x130]
+      mov     [rsp+0x128], rax
+      mov     rdi, [rsp+0x120]
+      mov     rax, [rsp+0x128]
+      mov     [rsp+0x28], rax
+      mov     rsi, [mem2]
+      call    _ZN4core3fmt10ArgumentV13newE
+      mov     rcx, rax
+      mov     rsi, rdx
+      mov     [rsp+0x30], rsi
+      mov     [rsp+0x38], rcx
+      jmp     block13
+    block13:
+      mov     rdi, [rsp+0x28]
+      mov     rax, [rsp+0x30]
+      mov     rcx, [rsp+0x38]
+      mov     [rsp+8], rcx
+      mov     [rsp+0x10], rax
+      lea     rsi, [_ZN60_$LT$alloc..string..String$u20$as$u20$core..fmt..Display$GT$3fmtE]
+      call    _ZN4core3fmt10ArgumentV13newE
+      mov     rcx, rax
+      mov     rsi, rdx
+      mov     [rsp+0x18], rsi
+      mov     [rsp+0x20], rcx
+      jmp     block14
+    block14:
+      mov     rcx, [rsp+0x18]
+      mov     rdx, [rsp+0x20]
+      mov     rsi, [rsp+0x10]
+      mov     rdi, [rsp+8]
+      mov     [rsp+0x100], rdi
+      mov     [rsp+0x108], rsi
+      mov     [rsp+0x110], rdx
+      mov     [rsp+0x118], rcx
+      lea     rsi, [mem3]
+      lea     rdi, [rsp+0xd0]
+      lea     rcx, [rsp+0x100]
+      mov     r8d, 2
+      mov     rdx, r8
+      call    _ZN4core3fmt9Arguments6new_v1E
+      jmp     block15
+    block15:
+      mov     rcx, [mem4]
+      lea     rdi, [rsp+0xb8]
+      lea     rsi, [rsp+0xd0]
+      call    rcx
+      jmp     block16
+    block16:
+      lea     rdi, [rsp+0x130]
+      call    _ZN4core3ptr42drop_in_place$LT$alloc..string..String$GT$E
+      jmp     block17
+    block17:
+      mov     rdi, [rsp+0x60]
+      mov     rcx, [rsp+0xc8]
+      mov     [rsp+0xb0], rcx
+      movups  xmm0, [rsp+0xb8]
+      movaps  [rsp+0xa0], xmm0
+      lea     rsi, [rsp+0xa0]
+      call    _ZN65_$LT$alloc..string..String$u20$as$u20$alloc..string..ToString$GT$9to_stringE
+      jmp     block18
+    block18:
+      lea     rdi, [rsp+0xa0]
+      call    _ZN4core3ptr42drop_in_place$LT$alloc..string..String$GT$E
+      jmp     block19
+    block19:
+      test    [rsp+0x1a7], 1
+      jne     block25
+    block20:
+      mov     rdi, [rsp+0x58]
+      mov     [rsp+0x1a7], 0
+      call    _ZN4core3ptr42drop_in_place$LT$alloc..string..String$GT$E
+      mov     rax, [rsp+0x68]
+      add     rsp, 0x1b8
+      ret
+    block21:
+      lea     rdi, [rsp+0xa0]
+      call    _ZN4core3ptr42drop_in_place$LT$alloc..string..String$GT$E
+      jmp     block27
+    block22:
+      lea     rdi, [rsp+0xb8]
+      call    _ZN4core3ptr42drop_in_place$LT$alloc..string..String$GT$E
+      jmp     block27
+    block23:
+      lea     rdi, [rsp+0x130]
+      call    _ZN4core3ptr42drop_in_place$LT$alloc..string..String$GT$E
+      jmp     block27
+    block24:
+      mov     rdi, [rsp+0x58]
+      call    _ZN4core3ptr42drop_in_place$LT$alloc..string..String$GT$E
+      mov     rdi, [rsp+0x1a8]
+      call    _Unwind_Resume@plt
+      ud2
+    block25:
+      lea     rdi, [rsp+0x80]
+      call    _ZN4core3ptr48drop_in_place$LT$alloc..vec..Vec$LT$char$GT$$GT$E
+      jmp     block20
+    block26:
+      lea     rdi, [rsp+0x80]
+      call    _ZN4core3ptr48drop_in_place$LT$alloc..vec..Vec$LT$char$GT$$GT$E
+      jmp     block24
+    block27:
+      test    [rsp+0x1a7], 1
+      jne     block26
+    block28:
+      jmp     block24
+    block29:
+      jmp     block19
+    block30:
+      mov     rcx, rax
+      mov     eax, edx
+      mov     [rsp+0x1a8], rcx
+      mov     [rsp+0x1b0], eax
+      jmp     block24
+    block31:
+      mov     rcx, rax
+      mov     eax, edx
+      mov     [rsp+0x1a8], rcx
+      mov     [rsp+0x1b0], eax
+      jmp     block27
+    block32:
+      mov     rcx, rax
+      mov     eax, edx
+      mov     [rsp+0x1a8], rcx
+      mov     [rsp+0x1b0], eax
+      jmp     block23
+    block33:
+      mov     rcx, rax
+      mov     eax, edx
+      mov     [rsp+0x1a8], rcx
+      mov     [rsp+0x1b0], eax
+      jmp     block22
+    block34:
+      mov     rcx, rax
+      mov     eax, edx
+      mov     [rsp+0x1a8], rcx
+      mov     [rsp+0x1b0], eax
+      jmp     block21
+    block35:
+      int3

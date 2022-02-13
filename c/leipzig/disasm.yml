@@ -1,0 +1,154 @@
+"chk":
+  "asm": |
+    chk:
+      endbr64
+      push    rbp
+      mov     rbp, rsp
+      mov     rax, [CURRENT]
+      cmp     rax, 1
+      jg      block2
+    block1:
+      mov     rax, [COUNTER]
+      mov     rsi, rax
+      lea     rdi, [mem1]; "%ld"
+      mov     eax, 0
+      call    printf@plt.sec
+      mov     rax, [stdout]
+      mov     rdi, rax
+      call    fflush@plt.sec
+      mov     edi, 2
+      call    raise@plt.sec
+    block2:
+      mov     esi, 0x16
+      lea     rdi, [RESTART]
+      call    siglongjmp@plt.sec
+"dec":
+  "asm": |
+    dec:
+      endbr64
+      push    rbp
+      mov     rbp, rsp
+      mov     rax, [COUNTER]
+      add     rax, 1
+      mov     [COUNTER], rax
+      mov     rax, [CURRENT]
+      mov     rdx, rax
+      shr     rdx, 0x3f
+      add     rax, rdx
+      sar     rax, 1
+      mov     [CURRENT], rax
+      mov     esi, 0x15
+      lea     rdi, [RESTART]
+      call    siglongjmp@plt.sec
+"inc":
+  "asm": |
+    inc:
+      endbr64
+      push    rbp
+      mov     rbp, rsp
+      mov     rax, [COUNTER]
+      add     rax, 1
+      mov     [COUNTER], rax
+      mov     rdx, [CURRENT]
+      mov     rax, rdx
+      add     rax, rax
+      add     rax, rdx
+      mov     [CURRENT], rax
+      mov     rax, [CURRENT]
+      add     rax, 1
+      mov     [CURRENT], rax
+      mov     esi, 0x15
+      lea     rdi, [RESTART]
+      call    siglongjmp@plt.sec
+"main":
+  "asm": |
+    main:
+      endbr64
+      push    rbp
+      mov     rbp, rsp
+      sub     rsp, 0x20
+      mov     [rbp-0x14], edi
+      mov     [rbp-0x20], rsi
+      cmp     [rbp-0x14], 2
+      je      block2
+    block1:
+      mov     rax, [stderr]
+      mov     rcx, rax
+      mov     edx, 6
+      mov     esi, 1
+      lea     rdi, [mem1]; "Nein!\n"
+      call    fwrite@plt.sec
+      mov     edi, 6
+      call    raise@plt.sec
+    block2:
+      mov     [COUNTER], 0
+      mov     rax, [rbp-0x20]
+      add     rax, 8
+      mov     rax, [rax]
+      mov     rdi, rax
+      call    atoi@plt.sec
+      cdqe
+      mov     [CURRENT], rax
+      mov     rax, [CURRENT]
+      test    rax, rax
+      jg      block4
+    block3:
+      mov     rax, [stderr]
+      mov     rcx, rax
+      mov     edx, 8
+      mov     esi, 1
+      lea     rdi, [mem2]; "Nein...\n"
+      call    fwrite@plt.sec
+      mov     edi, 6
+      call    raise@plt.sec
+    block4:
+      lea     rsi, [dec]
+      mov     edi, 0xa
+      call    signal@plt.sec
+      lea     rsi, [inc]
+      mov     edi, 0xc
+      call    signal@plt.sec
+      lea     rsi, [chk]
+      mov     edi, 0x15
+      call    signal@plt.sec
+      lea     rsi, [pty]
+      mov     edi, 0x16
+      call    signal@plt.sec
+      call    getpid@plt.sec
+      mov     [rbp-8], eax
+      mov     esi, 1
+      lea     rdi, [RESTART]
+      call    __sigsetjmp@plt.sec
+      endbr64
+      mov     [rbp-4], eax
+      cmp     [rbp-4], 0
+      jne     block6
+    block5:
+      mov     [rbp-4], 0x15
+    block6:
+      mov     eax, [rbp-8]
+      mov     edx, [rbp-4]
+      mov     esi, edx
+      mov     edi, eax
+      call    kill@plt.sec
+      mov     eax, 0
+      leave
+      ret
+"pty":
+  "asm": |
+    pty:
+      endbr64
+      push    rbp
+      mov     rbp, rsp
+      mov     rax, [CURRENT]
+      and     eax, 1
+      test    rax, rax
+      je      block2
+    block1:
+      mov     esi, 0xc
+      lea     rdi, [RESTART]
+      call    siglongjmp@plt.sec
+    block2:
+      mov     esi, 0xa
+      lea     rdi, [RESTART]
+      call    siglongjmp@plt.sec

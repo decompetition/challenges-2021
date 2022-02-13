@@ -1,0 +1,149 @@
+"main":
+  "asm": |
+    main:
+      endbr64
+      push    rbp
+      mov     rbp, rsp
+      sub     rsp, 0x60
+      mov     [rbp-0x54], edi
+      mov     [rbp-0x60], rsi
+      mov     rax, fs:[0x28]
+      mov     [rbp-8], rax
+      xor     eax, eax
+      cmp     [rbp-0x54], 1
+      jg      block2
+    block1:
+      lea     rdi, [mem1]; "Please provide a seed."
+      call    puts@plt.sec
+      mov     eax, 0xffffffff
+      jmp     block9
+    block2:
+      mov     rax, [rbp-0x60]
+      add     rax, 8
+      mov     rax, [rax]
+      mov     edx, 0
+      mov     esi, 0
+      mov     rdi, rax
+      call    strtol@plt.sec
+      mov     [rbp-0x40], eax
+      mov     [rbp-0x30], 0
+      mov     [rbp-0x28], 0
+      mov     [rbp-0x20], 0
+      mov     [rbp-0x18], 0
+      mov     [rbp-0x48], 0
+      jmp     block7
+    block3:
+      lea     rax, [rbp-0x30]
+      mov     edx, 0x20
+      mov     esi, 0
+      mov     rdi, rax
+      call    memset@plt.sec
+      mov     eax, [rbp-0x40]
+      xor     eax, [rbp-0x48]
+      mov     [rbp-0x4c], eax
+      lea     rax, [rbp-0x4c]
+      mov     rdi, rax
+      call    rrrand
+      mov     [rbp-0x3c], eax
+      mov     ecx, [rbp-0x3c]
+      movsxd  rax, ecx
+      imul    rax, rax, 0x66666667
+      shr     rax, 0x20
+      mov     edx, eax
+      sar     edx, 1
+      mov     eax, ecx
+      sar     eax, 0x1f
+      sub     edx, eax
+      mov     eax, edx
+      shl     eax, 2
+      add     eax, edx
+      sub     ecx, eax
+      mov     edx, ecx
+      lea     eax, [rdx+5]
+      mov     [rbp-0x38], eax
+      mov     [rbp-0x44], 0
+      jmp     block5
+    block4:
+      lea     rax, [rbp-0x4c]
+      mov     rdi, rax
+      call    rrrand
+      mov     [rbp-0x34], eax
+      mov     eax, [rbp-0x34]
+      movsxd  rdx, eax
+      imul    rdx, rdx, 0x4ec4ec4f
+      shr     rdx, 0x20
+      mov     ecx, edx
+      sar     ecx, 3
+      cdq
+      sub     ecx, edx
+      mov     edx, ecx
+      imul    edx, edx, 0x1a
+      sub     eax, edx
+      mov     edx, eax
+      mov     eax, edx
+      add     eax, 0x61
+      mov     edx, eax
+      mov     eax, [rbp-0x44]
+      cdqe
+      mov     [rbp+rax-0x30], dl
+      add     [rbp-0x44], 1
+    block5:
+      mov     eax, [rbp-0x44]
+      cmp     eax, [rbp-0x38]
+      jl      block4
+    block6:
+      lea     rax, [rbp-0x30]
+      mov     rcx, -1
+      mov     rdx, rax
+      mov     eax, 0
+      mov     rdi, rdx
+      repne scasb al, [rdi]
+      mov     rax, rcx
+      not     rax
+      lea     rdx, [rax-1]
+      lea     rax, [rbp-0x30]
+      add     rax, rdx
+      mov     [rax], 0x7a69622e
+      mov     [rax+4], 0
+      lea     rax, [rbp-0x30]
+      mov     rdi, rax
+      call    puts@plt.sec
+      add     [rbp-0x48], 1
+    block7:
+      cmp     [rbp-0x48], 0xf
+      jle     block3
+    block8:
+      mov     eax, 0
+    block9:
+      mov     rsi, [rbp-8]
+      xor     rsi, fs:[0x28]
+      je      block11
+    block10:
+      call    __stack_chk_fail@plt.sec
+    block11:
+      leave
+      ret
+"rrrand":
+  "asm": |
+    rrrand:
+      endbr64
+      push    rbp
+      mov     rbp, rsp
+      mov     [rbp-0x18], rdi
+      mov     rax, [rbp-0x18]
+      mov     eax, [rax]
+      imul    eax, eax, 0x343fd
+      add     eax, 0x269ec3
+      mov     [rbp-4], eax
+      mov     edx, [rbp-4]
+      mov     rax, [rbp-0x18]
+      mov     [rax], edx
+      shr     [rbp-4], 0x10
+      cmp     [rbp-4], 0x7fff
+      jbe     block2
+    block1:
+      sub     [rbp-4], 0x8000
+    block2:
+      mov     eax, [rbp-4]
+      pop     rbp
+      ret

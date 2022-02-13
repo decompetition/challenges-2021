@@ -1,0 +1,346 @@
+"main.(*Node).Dump":
+  "asm": |
+    main.(*Node).Dump:
+      mov     rcx, fs:[-8]
+      lea     rax, [rsp-0x28]
+      cmp     rax, [rcx+0x10]
+      jbe     block7
+    block1:
+      sub     rsp, 0xa8
+      mov     [rsp+0xa0], rbp
+      lea     rbp, [rsp+0xa0]
+      mov     rax, [rsp+0xb0]
+      test    rax, rax
+      je      block6
+    block2:
+      cmp     [rax+8], 0
+      je      block4
+    block3:
+      xorps   xmm0, xmm0
+      movups  [rsp+0x70], xmm0
+      lea     rax, [mem1]
+      mov     [rsp+0x70], rax
+      lea     rcx, [mem2]; "!\u0019M"
+      mov     [rsp+0x78], rcx
+      mov     rcx, [os.Stdout]
+      lea     rdx, [go.itab.*os.File,io.Writer]
+      mov     [rsp], rdx
+      mov     [rsp+8], rcx
+      lea     rcx, [rsp+0x70]
+      mov     [rsp+0x10], rcx
+      mov     [rsp+0x18], 1
+      mov     [rsp+0x20], 1
+      call    fmt.Fprint
+      mov     rax, [rsp+0xb0]
+      mov     rcx, [rax+8]
+      mov     [rsp], rcx
+      call    main.(*Node).Dump
+      mov     rax, [rsp+0xb0]
+      mov     rcx, [rax+0x18]
+      mov     [rsp], rcx
+      call    runtime.convT64
+      mov     rax, [rsp+8]
+      xorps   xmm0, xmm0
+      movups  [rsp+0x60], xmm0
+      lea     rcx, [mem3]
+      mov     [rsp+0x60], rcx
+      mov     [rsp+0x68], rax
+      mov     rax, [os.Stdout]
+      lea     rcx, [go.itab.*os.File,io.Writer]
+      mov     [rsp], rcx
+      mov     [rsp+8], rax
+      lea     rax, [mem4]; " %d  <== at  fp= is  lr: of  ..."
+      mov     [rsp+0x10], rax
+      mov     [rsp+0x18], 4
+      lea     rax, [rsp+0x60]
+      mov     [rsp+0x20], rax
+      mov     [rsp+0x28], 1
+      mov     [rsp+0x30], 1
+      call    fmt.Fprintf
+      mov     rax, [rsp+0xb0]
+      mov     rax, [rax+0x10]
+      mov     [rsp], rax
+      call    main.(*Node).Dump
+      xorps   xmm0, xmm0
+      movups  [rsp+0x50], xmm0
+      lea     rax, [mem1]
+      mov     [rsp+0x50], rax
+      lea     rax, [mem5]; "\"\u0019M"
+      mov     [rsp+0x58], rax
+      mov     rax, [os.Stdout]
+      lea     rcx, [go.itab.*os.File,io.Writer]
+      mov     [rsp], rcx
+      mov     [rsp+8], rax
+      lea     rax, [rsp+0x50]
+      mov     [rsp+0x10], rax
+      mov     [rsp+0x18], 1
+      mov     [rsp+0x20], 1
+      call    fmt.Fprint
+      mov     rbp, [rsp+0xa0]
+      add     rsp, 0xa8
+      ret
+    block4:
+      cmp     [rax+0x10], 0
+      jne     block3
+    block5:
+      mov     rax, [rax+0x18]
+      mov     [rsp], rax
+      call    runtime.convT64
+      mov     rax, [rsp+8]
+      xorps   xmm0, xmm0
+      movups  [rsp+0x80], xmm0
+      lea     rcx, [mem3]
+      mov     [rsp+0x80], rcx
+      mov     [rsp+0x88], rax
+      mov     rax, [os.Stdout]
+      lea     rcx, [go.itab.*os.File,io.Writer]
+      mov     [rsp], rcx
+      mov     [rsp+8], rax
+      lea     rax, [mem6]; "%d) )()\n+-, ->0125: > CcCfCoC..."
+      mov     [rsp+0x10], rax
+      mov     [rsp+0x18], 2
+      lea     rax, [rsp+0x80]
+      mov     [rsp+0x20], rax
+      mov     [rsp+0x28], 1
+      mov     [rsp+0x30], 1
+      call    fmt.Fprintf
+      mov     rbp, [rsp+0xa0]
+      add     rsp, 0xa8
+      ret
+    block6:
+      xorps   xmm0, xmm0
+      movups  [rsp+0x90], xmm0
+      lea     rax, [mem1]
+      mov     [rsp+0x90], rax
+      lea     rax, [mem7]; "&\u0019M"
+      mov     [rsp+0x98], rax
+      mov     rax, [os.Stdout]
+      lea     rcx, [go.itab.*os.File,io.Writer]
+      mov     [rsp], rcx
+      mov     [rsp+8], rax
+      lea     rax, [rsp+0x90]
+      mov     [rsp+0x10], rax
+      mov     [rsp+0x18], 1
+      mov     [rsp+0x20], 1
+      call    fmt.Fprint
+      mov     rbp, [rsp+0xa0]
+      add     rsp, 0xa8
+      ret
+    block7:
+      call    runtime.morestack_noctxt
+      jmp     main.(*Node).Dump
+    block8:
+      int3
+"main.main":
+  "asm": |
+    main.main:
+      mov     rcx, fs:[-8]
+      lea     rax, [rsp-0x10]
+      cmp     rax, [rcx+0x10]
+      jbe     block41
+    block1:
+      sub     rsp, 0x90
+      mov     [rsp+0x88], rbp
+      lea     rbp, [rsp+0x88]
+      lea     rax, [mem1]
+      mov     [rsp], rax
+      call    runtime.newobject
+      mov     rax, [rsp+8]
+      mov     [rsp+0x70], rax
+      xor     ecx, ecx
+      xor     edx, edx
+      jmp     block21
+    block2:
+      mov     rcx, [rcx]
+    block3:
+      test    rcx, rcx
+      je      block6
+    block4:
+      mov     rdx, [rax]
+      cmp     [rcx+0x18], rdx
+      jg      block2
+    block5:
+      test    rcx, rcx
+    block6:
+      je      block29
+    block7:
+      mov     [rsp+0x50], rcx
+      mov     rdx, [rax]
+      mov     [rsp+0x48], rdx
+      mov     rbx, [rcx+0x10]
+      mov     [rsp+0x58], rbx
+      lea     rsi, [mem2]
+      mov     [rsp], rsi
+      call    runtime.newobject
+      mov     rdi, [rsp+8]
+      mov     rax, [rsp+0x48]
+      mov     [rdi+0x18], rax
+      cmp     [runtime.writeBarrier], 0
+      jne     block28
+    block8:
+      mov     rcx, [rsp+0x58]
+      mov     [rdi+8], rcx
+    block9:
+      test    rcx, rcx
+      je      block12
+    block10:
+      cmp     [runtime.writeBarrier], 0
+      jne     block27
+    block11:
+      mov     [rcx], rdi
+    block12:
+      cmp     [runtime.writeBarrier], 0
+      jne     block26
+    block13:
+      mov     [rdi+0x10], 0
+    block14:
+      cmp     [runtime.writeBarrier], 0
+      jne     block25
+    block15:
+      mov     rax, [rsp+0x50]
+      mov     [rax+0x10], rdi
+    block16:
+      test    rdi, rdi
+      je      block19
+    block17:
+      cmp     [runtime.writeBarrier], 0
+      jne     block24
+    block18:
+      mov     [rdi], rax
+    block19:
+      mov     rax, [rsp+0x60]
+    block20:
+      mov     rcx, rdi
+      mov     rdx, rax
+      mov     rax, [rsp+0x70]
+    block21:
+      mov     [rsp+0x60], rdx
+      mov     [rsp+0x68], rcx
+      xorps   xmm0, xmm0
+      movups  [rsp+0x78], xmm0
+      lea     rbx, [mem3]
+      mov     [rsp+0x78], rbx
+      mov     [rsp+0x80], rax
+      mov     rsi, [os.Stdin]
+      lea     rdi, [go.itab.*os.File,io.Reader]; " tK"
+      mov     [rsp], rdi
+      mov     [rsp+8], rsi
+      lea     rsi, [rsp+0x78]
+      mov     [rsp+0x10], rsi
+      mov     [rsp+0x18], 1
+      mov     [rsp+0x20], 1
+      call    fmt.Fscan
+      mov     rax, [rsp+0x30]
+      cmp     rax, 0
+      cmp     [rsp+0x28], 1
+      jne     block40
+    block22:
+      cmp     rax, 0
+      jne     block40
+    block23:
+      mov     rax, [rsp+0x70]
+      mov     rcx, [rsp+0x68]
+      jmp     block3
+    block24:
+      call    runtime.gcWriteBarrier
+      jmp     block19
+    block25:
+      mov     rcx, [rsp+0x50]
+      lea     rdx, [rcx+0x10]
+      mov     rax, rdi
+      mov     rdi, rdx
+      call    runtime.gcWriteBarrier
+      mov     rdi, rax
+      mov     rax, rcx
+      jmp     block16
+    block26:
+      lea     rcx, [rdi+0x10]
+      mov     rax, rdi
+      mov     rdi, rcx
+      mov     rdx, rax
+      xor     eax, eax
+      call    runtime.gcWriteBarrier
+      mov     rdi, rdx
+      jmp     block14
+    block27:
+      mov     rax, rdi
+      mov     rdi, rcx
+      call    runtime.gcWriteBarrier
+      mov     rdi, rax
+      jmp     block12
+    block28:
+      lea     rdx, [rdi+8]
+      mov     rax, rdi
+      mov     rdi, rdx
+      mov     rcx, rax
+      mov     rax, [rsp+0x58]
+      call    runtime.gcWriteBarrier
+      mov     rdi, rcx
+      mov     rcx, rax
+      jmp     block9
+    block29:
+      mov     rcx, [rax]
+      mov     [rsp+0x40], rcx
+      lea     rdx, [mem2]
+      mov     [rsp], rdx
+      call    runtime.newobject
+      mov     rax, [rsp+8]
+      mov     rcx, [rsp+0x40]
+      mov     [rax+0x18], rcx
+      cmp     [runtime.writeBarrier], 0
+      jne     block39
+    block30:
+      mov     rdi, [rsp+0x60]
+      mov     [rax+8], rdi
+    block31:
+      test    rdi, rdi
+      je      block34
+    block32:
+      cmp     [runtime.writeBarrier], 0
+      jne     block38
+    block33:
+      mov     [rdi], rax
+    block34:
+      cmp     [runtime.writeBarrier], 0
+      jne     block37
+    block35:
+      mov     [rax+0x10], 0
+    block36:
+      mov     rdi, rax
+      jmp     block20
+    block37:
+      lea     rdi, [rax+0x10]
+      mov     rcx, rax
+      xor     eax, eax
+      call    runtime.gcWriteBarrier
+      mov     rax, rcx
+      jmp     block36
+    block38:
+      call    runtime.gcWriteBarrier
+      jmp     block34
+    block39:
+      lea     rdi, [rax+8]
+      mov     rcx, rax
+      mov     rax, [rsp+0x60]
+      call    runtime.gcWriteBarrier
+      mov     rdi, rax
+      mov     rax, rcx
+      jmp     block31
+    block40:
+      mov     rax, [rsp+0x60]
+      mov     [rsp], rax
+      call    main.(*Node).Dump
+      mov     rax, [os.Stdout]
+      lea     rcx, [go.itab.*os.File,io.Writer]
+      mov     [rsp], rcx
+      mov     [rsp+8], rax
+      mov     [rsp+0x10], 0
+      xorps   xmm0, xmm0
+      movups  [rsp+0x18], xmm0
+      call    fmt.Fprintln
+      mov     rbp, [rsp+0x88]
+      add     rsp, 0x90
+      ret
+    block41:
+      call    runtime.morestack_noctxt
+      jmp     main.main

@@ -1,0 +1,318 @@
+{
+  "defaults": {
+    "folder":  "%r/%l/%n",
+    "source":  "%f/source%x",
+    "binary":  "%f/binary.out",
+    "starter": "%f/starter%x",
+    "disasm":  "%f/disasm.yml",
+    "tester":  "%f/test.py",
+
+    "container": "decompetition/builder-2021",
+    "builder":   "%r/%l/build.sh",
+    "options":   []
+  },
+
+  "binaries": {
+    "baby-c": {
+      "language": "c",
+      "value": 200,
+
+      "functions": [
+        "main"
+      ]
+    },
+
+    "baby-cpp": {
+      "language": "cpp",
+      "value": 200,
+
+      "functions": [
+        "main"
+      ]
+    },
+
+    "baby-go": {
+      "language": "go",
+      "value": 300,
+
+      "functions": [
+        "main.main"
+      ]
+    },
+
+    "baby-nim": {
+      "language": "nim",
+      "value": 300,
+
+      "functions": [
+        "NimMainModule"
+      ]
+    },
+
+    "baby-rust": {
+      "language": "rust",
+      "value": 300,
+
+      "functions": [
+        "_ZN6source4main17h*E",
+        "_ZN6source4step17h*E"
+      ]
+    },
+
+    "baby-swift": {
+      "language": "swift",
+      "value": 300,
+
+      "functions": [
+        "$s6binary4meetyS2dF",
+        "main"
+      ]
+    },
+
+    "blaise": {
+      "language": "cpp",
+      "value": 100,
+
+      "functions": [
+        "main"
+      ]
+    },
+
+    "braintrust": {
+      "language": "rust",
+      "value": 400,
+
+      "functions": [
+        "_ZN6source4main17h*E",
+        "_ZN6source5State3new17h*E",
+        "_ZN6source5State4diff17h*E",
+        "_ZN6source5State4dump17h*E",
+        "_ZN6source5State4jump17h*E",
+        "_ZN6source5State4read17h*E",
+        "_ZN6source5State4step17h*E"
+      ]
+    },
+
+    "cartree": {
+      "language": "go",
+      "value": 300,
+
+      "functions": [
+        "main.(*Node).Dump",
+        "main.main"
+      ]
+    },
+
+    "crosscheck": {
+      "language": "swift",
+      "value": 500,
+
+      "functions": [
+        "main"
+      ]
+    },
+
+    "daedalus": {
+      "language": "c",
+      "value": 400,
+
+      "functions": [
+        "edge_new",
+        "fin",
+        "fys",
+        "grid_get",
+        "grid_new",
+        "grid_set",
+        "main",
+        "node_new",
+        "plan_new",
+        "plan_out",
+        "uni"
+      ]
+    },
+
+    "diffcult": {
+      "language": "swift",
+      "value": 200,
+
+      "functions": [
+        "$s6binary5setupSDySSSi_SitGyF",
+        "main"
+      ]
+    },
+
+    "demesne": {
+      "language": "c",
+      "value": 100,
+
+      "functions": [
+        "main",
+        "rrrand"
+      ]
+    },
+
+    "dublin": {
+      "language": "c",
+      "value": 300,
+
+      "functions": [
+        "insert",
+        "main",
+        "walk"
+      ]
+    },
+
+    "endeavour": {
+      "language": "rust",
+      "value": 500,
+
+      "functions": [
+        "_ZN6source4deco17h*E",
+        "_ZN6source4enco17h*E",
+        "_ZN6source4enco28_$u7b$$u7b$closure$u7d$$u7d$17h*E",
+        "_ZN6source4main17h*E",
+        "_ZN6source4trim17h*E"
+      ]
+    },
+
+    "goalie": {
+      "language": "go",
+      "value": 500,
+
+      "functions": [
+        "main.(*Field).Draw",
+        "main.(*Field).Seed",
+        "main.(*Field).Step",
+        "main.(*Field).Wrap",
+        "main.main",
+        "main.main.func1",
+        "main.NewArray",
+        "main.NewField"
+      ]
+    },
+
+    "intemperate": {
+      "language": "nim",
+      "value": 500,
+
+      "functions": [
+        "NimMainModule"
+      ]
+    },
+
+    "leipzig": {
+      "language": "c",
+      "value": 200,
+
+      "functions": [
+        "chk",
+        "dec",
+        "inc",
+        "main",
+        "pty"
+      ]
+    },
+
+    "malware": {
+      "language": "c",
+      "value": 300,
+
+      "functions": [
+        "check",
+        "hide",
+        "main",
+        "myprint",
+        "payload"
+      ]
+    },
+
+    "oracle": {
+      "language": "go",
+      "value": 200,
+
+      "functions": [
+        "main.main",
+        "main.predict"
+      ]
+    },
+
+    "parasite": {
+      "language": "rust",
+      "value": 500,
+
+      "functions": [
+        "_ZN6source4deco17h*E",
+        "_ZN6source4deco28_$u7b$$u7b$closure$u7d$$u7d$17h*E",
+        "_ZN6source4deco28_$u7b$$u7b$closure$u7d$$u7d$17h*E",
+        "_ZN6source4deco28_$u7b$$u7b$closure$u7d$$u7d$17h*E",
+        "_ZN6source4enco17h*E",
+        "_ZN6source4main17h*E",
+        "_ZN6source4read17h*E"
+      ]
+    },
+
+    "rotterdam": {
+      "language": "c",
+      "value": 200,
+
+      "functions": [
+        "domp",
+        "main",
+        "pype",
+        "reed",
+        "rote",
+        "slenk",
+        "slurp"
+      ]
+    },
+
+    "rumrum": {
+      "language": "cpp",
+      "value": 300,
+
+      "builder": "cpp/rumrum/build.sh",
+
+      "functions": [
+        "_Z10gen_randomNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi",
+        "_Z12MurmurOAAT32NSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE",
+        "_Z7consumej",
+        "_Z7produceNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi",
+        "main"
+      ]
+    },
+
+    "scaffold": {
+      "language": "go",
+      "value": 300,
+
+      "functions": [
+        "main.check",
+        "main.main",
+        "main.selec"
+      ]
+    },
+
+    "winkey": {
+      "language": "c",
+      "value": 100,
+
+      "functions": [
+        "check",
+        "ctoi",
+        "main"
+      ]
+    },
+
+    "yurlungur": {
+      "language": "cpp",
+      "value": 300,
+
+      "functions": [
+        "_Z6createiPPc",
+        "_Z6escapePh",
+        "_Z6mutateRSt23mersenne_twister_engineImLm64ELm312ELm156ELm31ELm13043109905998158313ELm29ELm6148914691236517205ELm17ELm8202884508482404352ELm37ELm18444473444759240704ELm43ELm6364136223846793005EEPh",
+        "main"
+      ]
+    }
+  }
+}

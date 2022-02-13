@@ -1,0 +1,1005 @@
+"main.(*Field).Draw":
+  "asm": |
+    main.(*Field).Draw:
+      mov     rcx, fs:[-8]
+      cmp     rsp, [rcx+0x10]
+      jbe     block15
+    block1:
+      sub     rsp, 0x78
+      mov     [rsp+0x70], rbp
+      lea     rbp, [rsp+0x70]
+      mov     rdx, [rsp+0x80]
+      mov     eax, 1
+      jmp     block10
+    block2:
+      mov     rbx, [rsp+0x48]
+      lea     rcx, [rbx+1]
+      mov     rbx, [rsp+0x40]
+      mov     rsi, [rsp+0x80]
+      mov     rax, rbx
+      mov     rdx, rsi
+    block3:
+      cmp     [rdx], rcx
+      jbe     block9
+    block4:
+      mov     rbx, [rdx+0x10]
+      mov     rsi, [rdx+0x18]
+      cmp     rax, rsi
+      jae     block14
+    block5:
+      lea     rsi, [rax+rax * 2]
+      mov     rdi, [rbx+rsi * 8]
+      mov     rbx, [rbx+rsi * 8+8]
+      cmp     rcx, rbx
+      jae     block13
+    block6:
+      mov     [rsp+0x48], rcx
+      lea     rbx, [rdi+rcx]
+      cmp     [rbx], 0
+      je      block8
+    block7:
+      xorps   xmm0, xmm0
+      movups  [rsp+0x60], xmm0
+      lea     rax, [mem1]
+      mov     [rsp+0x60], rax
+      lea     rcx, [mem2]; "#SN"
+      mov     [rsp+0x68], rcx
+      mov     rdx, [os.Stdout]
+      lea     rbx, [go.itab.*os.File,io.Writer]
+      mov     [rsp], rbx
+      mov     [rsp+8], rdx
+      lea     rdx, [rsp+0x60]
+      mov     [rsp+0x10], rdx
+      mov     [rsp+0x18], 1
+      mov     [rsp+0x20], 1
+      call    fmt.Fprint
+      jmp     block2
+    block8:
+      xorps   xmm0, xmm0
+      movups  [rsp+0x50], xmm0
+      lea     rax, [mem1]
+      mov     [rsp+0x50], rax
+      lea     rcx, [mem3]; " SN"
+      mov     [rsp+0x58], rcx
+      mov     rdx, [os.Stdout]
+      lea     rbx, [go.itab.*os.File,io.Writer]
+      mov     [rsp], rbx
+      mov     [rsp+8], rdx
+      lea     rdx, [rsp+0x50]
+      mov     [rsp+0x10], rdx
+      mov     [rsp+0x18], 1
+      mov     [rsp+0x20], 1
+      call    fmt.Fprint
+      jmp     block2
+    block9:
+      mov     rax, [os.Stdout]
+      lea     rcx, [go.itab.*os.File,io.Writer]
+      mov     [rsp], rcx
+      mov     [rsp+8], rax
+      mov     [rsp+0x10], 0
+      xorps   xmm0, xmm0
+      movups  [rsp+0x18], xmm0
+      call    fmt.Fprintln
+      mov     rax, [rsp+0x40]
+      inc     rax
+      mov     rcx, [rsp+0x80]
+      mov     rdx, rcx
+    block10:
+      cmp     [rdx+8], rax
+      jbe     block12
+    block11:
+      mov     [rsp+0x40], rax
+      mov     ecx, 1
+      jmp     block3
+    block12:
+      mov     rbp, [rsp+0x70]
+      add     rsp, 0x78
+      ret
+    block13:
+      mov     rax, rcx
+      mov     rcx, rbx
+      call    runtime.panicIndexU
+    block14:
+      mov     rcx, rsi
+      call    runtime.panicIndexU
+    block15:
+      call    runtime.morestack_noctxt
+      jmp     main.(*Field).Draw
+    block16:
+      int3
+"main.(*Field).Seed":
+  "asm": |
+    main.(*Field).Seed:
+      mov     rcx, fs:[-8]
+      cmp     rsp, [rcx+0x10]
+      jbe     block13
+    block1:
+      sub     rsp, 0x30
+      mov     [rsp+0x28], rbp
+      lea     rbp, [rsp+0x28]
+      mov     rax, [rsp+0x38]
+      mov     ecx, 1
+      jmp     block8
+    block2:
+      lea     rdi, [rdx+r8]
+      cmp     rbx, 0
+      sete    [rdi]
+      lea     rdx, [r8+1]
+      mov     rcx, rsi
+    block3:
+      cmp     [rax], rdx
+      jbe     block7
+    block4:
+      mov     [rsp+0x20], rdx
+      mov     rax, [math/rand.globalRand]
+      mov     [rsp], rax
+      mov     [rsp+8], 2
+      call    math/rand.(*Rand).Intn
+      mov     rax, [rsp+0x38]
+      mov     rcx, [rax+0x10]
+      mov     rdx, [rax+0x18]
+      mov     rbx, [rsp+0x10]
+      cmp     rbx, 0
+      mov     rsi, [rsp+0x18]
+      cmp     rsi, rdx
+      jae     block12
+    block5:
+      lea     rdx, [rsi+rsi * 2]
+      mov     rdi, [rcx+rdx * 8+8]
+      mov     rdx, [rcx+rdx * 8]
+      mov     r8, [rsp+0x20]
+      cmp     r8, rdi
+      jb      block2
+    block6:
+      jmp     block11
+    block7:
+      inc     rcx
+    block8:
+      cmp     [rax+8], rcx
+      jbe     block10
+    block9:
+      mov     [rsp+0x18], rcx
+      mov     edx, 1
+      jmp     block3
+    block10:
+      mov     rbp, [rsp+0x28]
+      add     rsp, 0x30
+      ret
+    block11:
+      mov     rax, r8
+      mov     rcx, rdi
+      call    runtime.panicIndexU
+    block12:
+      mov     rax, rsi
+      mov     rcx, rdx
+      call    runtime.panicIndexU
+    block13:
+      call    runtime.morestack_noctxt
+      jmp     main.(*Field).Seed
+    block14:
+      int3
+"main.(*Field).Step":
+  "asm": |
+    main.(*Field).Step:
+      mov     rcx, fs:[-8]
+      cmp     rsp, [rcx+0x10]
+      jbe     block45
+    block1:
+      sub     rsp, 0x18
+      mov     [rsp+0x10], rbp
+      lea     rbp, [rsp+0x10]
+      mov     rax, [rsp+0x20]
+      mov     [rsp], rax
+      call    main.(*Field).Wrap
+      mov     rax, [rsp+0x20]
+      mov     rcx, [rax]
+      mov     rdx, [rax+8]
+      mov     ebx, 1
+      jmp     block26
+    block2:
+      add     r8, 0x18
+      mov     rdi, r11
+    block3:
+      mov     r11, [r8+8]
+      mov     r12, [r8]
+      mov     r13, [rax+0x10]
+      mov     r14, [rax+0x18]
+      test    r11, r11
+      jbe     block44
+    block4:
+      mov     r15, [r12]
+      add     r15, rbx
+      cmp     r15, r14
+      jae     block43
+    block5:
+      lea     r14, [r15+r15 * 2]
+      mov     r15, [r13+r14 * 8+8]
+      mov     r13, [r13+r14 * 8]
+      cmp     r11, 1
+      jbe     block42
+    block6:
+      mov     r11, [r12+8]
+      add     r11, rsi
+      cmp     r11, r15
+      jae     block41
+    block7:
+      movzx   r11d, [r13+r11]
+      lea     r12, [r10+1]
+      test    r11, r11
+      cmovne  r10, r12
+      lea     r11, [rdi+1]
+      cmp     r11, r9
+      jl      block2
+    block8:
+      mov     r8, [rax+0x10]
+      mov     r9, [rax+0x18]
+      cmp     rbx, r9
+      jae     block40
+    block9:
+      lea     r9, [rbx+rbx * 2]
+      mov     r11, [r8+r9 * 8+8]
+      mov     r8, [r8+r9 * 8]
+      cmp     rsi, r11
+      jae     block39
+    block10:
+      add     r8, rsi
+      cmp     [r8], 0
+      je      block21
+    block11:
+      cmp     r10, 2
+      jl      block20
+    block12:
+      cmp     r10, 3
+      setle   r8b
+    block13:
+      mov     r10, [rax+0x30]
+      mov     r11, [rax+0x28]
+      cmp     rbx, r10
+      jae     block38
+    block14:
+      mov     r10, [r11+r9 * 8+8]
+      mov     r9, [r11+r9 * 8]
+      cmp     rsi, r10
+      jae     block37
+    block15:
+      mov     [r9+rsi], r8b
+    block16:
+      inc     rsi
+    block17:
+      cmp     rsi, rcx
+      jge     block25
+    block18:
+      mov     r8, [main.OFFSETS]; "`%X"
+      mov     r9, [mem1]
+      test    r9, r9
+      jle     block24
+    block19:
+      xor     edi, edi
+      xor     r10d, r10d
+      jmp     block3
+    block20:
+      xor     r8d, r8d
+      jmp     block13
+    block21:
+      mov     r8, [rax+0x28]
+      mov     r11, [rax+0x30]
+      cmp     rbx, r11
+      jae     block36
+    block22:
+      mov     r11, [r8+r9 * 8+8]
+      mov     r8, [r8+r9 * 8]
+      cmp     rsi, r11
+      jae     block35
+    block23:
+      add     r8, rsi
+      cmp     r10, 3
+      sete    [r8]
+      jmp     block16
+    block24:
+      xor     r10d, r10d
+      jmp     block8
+    block25:
+      inc     rbx
+    block26:
+      cmp     rbx, rdx
+      jge     block28
+    block27:
+      mov     esi, 1
+      jmp     block17
+    block28:
+      mov     rcx, [rax+0x38]
+      mov     rdx, [rax+0x30]
+      mov     rbx, [rax+0x28]
+      mov     rsi, [rax+0x20]
+      mov     r8, [rax+0x10]
+      mov     r9, [rax+0x18]
+      mov     [rax+0x18], rdx
+      mov     [rax+0x20], rcx
+      cmp     [runtime.writeBarrier], 0
+      jne     block34
+    block29:
+      mov     [rax+0x10], rbx
+    block30:
+      mov     [rax+0x30], r9
+      mov     [rax+0x38], rsi
+      cmp     [runtime.writeBarrier], 0
+      jne     block33
+    block31:
+      mov     [rax+0x28], r8
+    block32:
+      mov     rbp, [rsp+0x10]
+      add     rsp, 0x18
+      ret
+    block33:
+      lea     rdi, [rax+0x28]
+      mov     rax, r8
+      call    runtime.gcWriteBarrier
+      jmp     block32
+    block34:
+      lea     rdi, [rax+0x10]
+      mov     rcx, rax
+      mov     rax, rbx
+      call    runtime.gcWriteBarrier
+      mov     rax, rcx
+      jmp     block30
+    block35:
+      mov     rax, rsi
+      mov     rcx, r11
+      call    runtime.panicIndex
+    block36:
+      mov     rax, rbx
+      mov     rcx, r11
+      call    runtime.panicIndex
+    block37:
+      mov     rax, rsi
+      mov     rcx, r10
+      call    runtime.panicIndex
+    block38:
+      mov     rax, rbx
+      mov     rcx, r10
+      call    runtime.panicIndex
+    block39:
+      mov     rax, rsi
+      mov     rcx, r11
+      call    runtime.panicIndex
+    block40:
+      mov     rax, rbx
+      mov     rcx, r9
+      call    runtime.panicIndex
+    block41:
+      mov     rax, r11
+      mov     rcx, r15
+      call    runtime.panicIndex
+    block42:
+      mov     eax, 1
+      mov     rcx, r11
+      call    runtime.panicIndex
+    block43:
+      mov     rax, r15
+      mov     rcx, r14
+      call    runtime.panicIndex
+    block44:
+      xor     eax, eax
+      mov     rcx, r11
+      call    runtime.panicIndex
+    block45:
+      call    runtime.morestack_noctxt
+      jmp     main.(*Field).Step
+    block46:
+      int3
+"main.(*Field).Wrap":
+  "asm": |
+    main.(*Field).Wrap:
+      sub     rsp, 0x18
+      mov     [rsp+0x10], rbp
+      lea     rbp, [rsp+0x10]
+      mov     rdx, [rsp+0x20]
+      mov     rax, [rdx+8]
+      lea     rbx, [rax-1]
+      mov     rsi, [rdx]
+      mov     ecx, 1
+      jmp     block2
+    block1:
+      mov     [rdi+rcx], r9b
+      inc     rcx
+    block2:
+      cmp     rcx, rsi
+      jae     block11
+    block3:
+      mov     rdi, [rdx+0x10]
+      mov     r8, [rdx+0x18]
+      cmp     rbx, r8
+      jae     block32
+    block4:
+      lea     r8, [rax+rax * 2]
+      lea     r8, [r8-3]
+      mov     r9, [rdi+r8 * 8]
+      mov     r8, [rdi+r8 * 8+8]
+      cmp     rcx, r8
+      jae     block31
+    block5:
+      mov     r8, [rdi]
+      mov     rdi, [rdi+8]
+      movzx   r9d, [r9+rcx]
+      cmp     rcx, rdi
+      jae     block30
+    block6:
+      mov     [r8+rcx], r9b
+      mov     rdi, [rdx+0x10]
+      mov     r8, [rdx+0x18]
+      cmp     r8, 1
+      jbe     block29
+    block7:
+      mov     r9, [rdi+0x20]
+      mov     r10, [rdi+0x18]
+      cmp     rcx, r9
+      jae     block28
+    block8:
+      movzx   r9d, [r10+rcx]
+      cmp     rax, r8
+      jae     block27
+    block9:
+      lea     r8, [rax+rax * 2]
+      mov     r10, [rdi+r8 * 8+8]
+      mov     rdi, [rdi+r8 * 8]
+      cmp     rcx, r10
+      jb      block1
+    block10:
+      jmp     block26
+    block11:
+      lea     rbx, [rsi-1]
+      xor     ecx, ecx
+      jmp     block13
+    block12:
+      mov     [r8+rsi], r9b
+      inc     rcx
+    block13:
+      cmp     rcx, rax
+      ja      block20
+    block14:
+      mov     rdi, [rdx+0x10]
+      mov     r8, [rdx+0x18]
+      cmp     rcx, r8
+      jae     block25
+    block15:
+      lea     r8, [rcx+rcx * 2]
+      mov     r9, [rdi+r8 * 8+8]
+      mov     rdi, [rdi+r8 * 8]
+      cmp     rbx, r9
+      jae     block24
+    block16:
+      movzx   r9d, [rsi+rdi-1]
+      mov     [rdi], r9b
+      mov     rdi, [rdx+0x18]
+      mov     r9, [rdx+0x10]
+      cmp     rcx, rdi
+      jae     block23
+    block17:
+      mov     rdi, [r9+r8 * 8+8]
+      mov     r8, [r9+r8 * 8]
+      cmp     rdi, 1
+      jbe     block22
+    block18:
+      movzx   r9d, [r8+1]
+      cmp     rsi, rdi
+      jb      block12
+    block19:
+      jmp     block21
+    block20:
+      mov     rbp, [rsp+0x10]
+      add     rsp, 0x18
+      ret
+    block21:
+      mov     rax, rsi
+      mov     rcx, rdi
+      call    runtime.panicIndexU
+    block22:
+      mov     eax, 1
+      mov     rcx, rdi
+      call    runtime.panicIndex
+    block23:
+      mov     rax, rcx
+      mov     rcx, rdi
+      call    runtime.panicIndexU
+    block24:
+      mov     rax, rbx
+      mov     rcx, r9
+      call    runtime.panicIndexU
+    block25:
+      mov     rax, rcx
+      mov     rcx, r8
+      call    runtime.panicIndexU
+    block26:
+      mov     rax, rcx
+      mov     rcx, r10
+      call    runtime.panicIndexU
+    block27:
+      mov     rcx, r8
+      call    runtime.panicIndexU
+    block28:
+      mov     rax, rcx
+      mov     rcx, r9
+      call    runtime.panicIndexU
+    block29:
+      mov     eax, 1
+      mov     rcx, r8
+      call    runtime.panicIndex
+    block30:
+      mov     rax, rcx
+      mov     rcx, rdi
+      call    runtime.panicIndexU
+    block31:
+      mov     rax, rcx
+      mov     rcx, r8
+      call    runtime.panicIndexU
+    block32:
+      mov     rax, rbx
+      mov     rcx, r8
+      call    runtime.panicIndexU
+      int3
+"main.NewArray":
+  "asm": |
+    main.NewArray:
+      mov     rcx, fs:[-8]
+      cmp     rsp, [rcx+0x10]
+      jbe     block10
+    block1:
+      sub     rsp, 0x38
+      mov     [rsp+0x30], rbp
+      lea     rbp, [rsp+0x30]
+      lea     rax, [mem1]
+      mov     [rsp], rax
+      mov     rax, [rsp+0x48]
+      mov     [rsp+8], rax
+      mov     [rsp+0x10], rax
+      call    runtime.makeslice
+      mov     rax, [rsp+0x18]
+      mov     [rsp+0x28], rax
+      xor     ecx, ecx
+      jmp     block3
+    block2:
+      inc     rcx
+      mov     rax, r8
+    block3:
+      mov     rdx, [rsp+0x48]
+      cmp     rcx, rdx
+      jae     block8
+    block4:
+      mov     [rsp+0x20], rcx
+      lea     rax, [mem2]
+      mov     [rsp], rax
+      mov     rcx, [rsp+0x40]
+      mov     [rsp+8], rcx
+      mov     [rsp+0x10], rcx
+      call    runtime.makeslice
+      mov     rax, [rsp+0x18]
+      mov     rcx, [rsp+0x20]
+      mov     rdx, [rsp+0x48]
+      cmp     rcx, rdx
+      jae     block9
+    block5:
+      lea     rbx, [rcx+rcx * 2]
+      mov     rsi, [rsp+0x40]
+      mov     r8, [rsp+0x28]
+      mov     [r8+rbx * 8+8], rsi
+      mov     [r8+rbx * 8+0x10], rsi
+      lea     rdi, [r8+rbx * 8]
+      cmp     [runtime.writeBarrier], 0
+      jne     block7
+    block6:
+      mov     [r8+rbx * 8], rax
+      jmp     block2
+    block7:
+      call    runtime.gcWriteBarrier
+      jmp     block2
+    block8:
+      mov     [rsp+0x50], rax
+      mov     [rsp+0x58], rdx
+      mov     [rsp+0x60], rdx
+      mov     rbp, [rsp+0x30]
+      add     rsp, 0x38
+      ret
+    block9:
+      mov     rax, rcx
+      mov     rcx, rdx
+      call    runtime.panicIndexU
+    block10:
+      call    runtime.morestack_noctxt
+      jmp     main.NewArray
+    block11:
+      int3
+"main.NewField":
+  "asm": |
+    main.NewField:
+      mov     rcx, fs:[-8]
+      cmp     rsp, [rcx+0x10]
+      jbe     block8
+    block1:
+      sub     rsp, 0x70
+      mov     [rsp+0x68], rbp
+      lea     rbp, [rsp+0x68]
+      mov     rax, [rsp+0x78]
+      lea     rcx, [rax+1]
+      mov     [rsp+0x40], rcx
+      mov     [rsp], rcx
+      mov     rdx, [rsp+0x80]
+      lea     rbx, [rdx+1]
+      mov     [rsp+0x38], rbx
+      mov     [rsp+8], rbx
+      call    main.NewArray
+      mov     rax, [rsp+0x20]
+      mov     [rsp+0x30], rax
+      mov     rcx, [rsp+0x18]
+      mov     [rsp+0x28], rcx
+      mov     rdx, [rsp+0x10]
+      mov     [rsp+0x60], rdx
+      mov     rbx, [rsp+0x40]
+      mov     [rsp], rbx
+      mov     rbx, [rsp+0x38]
+      mov     [rsp+8], rbx
+      call    main.NewArray
+      mov     rax, [rsp+0x10]
+      mov     [rsp+0x58], rax
+      mov     rcx, [rsp+0x18]
+      mov     [rsp+0x50], rcx
+      mov     rdx, [rsp+0x20]
+      mov     [rsp+0x48], rdx
+      lea     rbx, [mem1]
+      mov     [rsp], rbx
+      call    runtime.newobject
+      mov     rax, [rsp+8]
+      mov     rcx, [rsp+0x78]
+      mov     [rax], rcx
+      mov     rcx, [rsp+0x80]
+      mov     [rax+8], rcx
+      mov     rcx, [rsp+0x28]
+      mov     [rax+0x18], rcx
+      mov     rcx, [rsp+0x30]
+      mov     [rax+0x20], rcx
+      cmp     [runtime.writeBarrier], 0
+      jne     block7
+    block2:
+      mov     rcx, [rsp+0x60]
+      mov     [rax+0x10], rcx
+    block3:
+      mov     rcx, [rsp+0x50]
+      mov     [rax+0x30], rcx
+      mov     rcx, [rsp+0x48]
+      mov     [rax+0x38], rcx
+      cmp     [runtime.writeBarrier], 0
+      jne     block6
+    block4:
+      mov     rcx, [rsp+0x58]
+      mov     [rax+0x28], rcx
+    block5:
+      mov     [rsp+0x88], rax
+      mov     rbp, [rsp+0x68]
+      add     rsp, 0x70
+      ret
+    block6:
+      lea     rdi, [rax+0x28]
+      mov     rcx, rax
+      mov     rax, [rsp+0x58]
+      call    runtime.gcWriteBarrier
+      mov     rax, rcx
+      jmp     block5
+    block7:
+      lea     rdi, [rax+0x10]
+      mov     rcx, rax
+      mov     rax, [rsp+0x60]
+      call    runtime.gcWriteBarrier
+      mov     rax, rcx
+      jmp     block3
+    block8:
+      call    runtime.morestack_noctxt
+      jmp     main.NewField
+    block9:
+      int3
+"main.main":
+  "asm": |
+    main.main:
+      mov     rcx, fs:[-8]
+      lea     rax, [rsp-0x28]
+      cmp     rax, [rcx+0x10]
+      jbe     block25
+    block1:
+      sub     rsp, 0xa8
+      mov     [rsp+0xa0], rbp
+      lea     rbp, [rsp+0xa0]
+      mov     rcx, [mem1]
+      mov     rdi, [os.Args]
+      test    rcx, rcx
+      jbe     block24
+    block2:
+      mov     [rdi+8], 6
+      cmp     [runtime.writeBarrier], 0
+      jne     block22
+    block3:
+      lea     rax, [mem2]; "goaliehangupheightkilledobjec..."
+      mov     [rdi], rax
+    block4:
+      mov     rax, [flag.CommandLine]
+      mov     [rsp], rax
+      lea     rax, [mem3]; "fhmnqstw + @ P [) )()\n, ->0s2..."
+      mov     [rsp+8], rax
+      mov     [rsp+0x10], 1
+      mov     [rsp+0x18], 0x12b74280
+      lea     rax, [mem4]; "frame delaygccheckmarki/o tim..."
+      mov     [rsp+0x20], rax
+      mov     [rsp+0x28], 0xb
+      call    flag.(*FlagSet).Duration
+      mov     rax, [rsp+0x30]
+      mov     [rsp+0x80], rax
+      mov     rcx, [flag.CommandLine]
+      mov     [rsp], rcx
+      lea     rcx, [mem5]; "w + @ P [) )()\n, ->0s25: > Cc..."
+      mov     [rsp+8], rcx
+      mov     [rsp+0x10], 1
+      mov     [rsp+0x18], 0x28
+      lea     rcx, [mem6]; "widthwrite (MB)\n Value addr= ..."
+      mov     [rsp+0x20], rcx
+      mov     [rsp+0x28], 5
+      call    flag.(*FlagSet).Uint
+      mov     rax, [rsp+0x30]
+      mov     [rsp+0x58], rax
+      mov     rcx, [flag.CommandLine]
+      mov     [rsp], rcx
+      lea     rcx, [mem7]; "hmnqstw + @ P [) )()\n, ->0s25..."
+      mov     [rsp+8], rcx
+      mov     [rsp+0x10], 1
+      mov     [rsp+0x18], 0x14
+      lea     rcx, [mem8]; "heightkilledobjectpopcntscvg:..."
+      mov     [rsp+0x20], rcx
+      mov     [rsp+0x28], 6
+      call    flag.(*FlagSet).Uint
+      mov     rax, [rsp+0x30]
+      mov     [rsp+0x78], rax
+      mov     rcx, [flag.CommandLine]
+      mov     [rsp], rcx
+      lea     rcx, [mem9]; "nqstw + @ P [) )()\n, ->0s25: ..."
+      mov     [rsp+8], rcx
+      mov     [rsp+0x10], 1
+      mov     [rsp+0x18], 0
+      lea     rcx, [mem10]; "framesgoaliehangupheightkille..."
+      mov     [rsp+0x20], rcx
+      mov     [rsp+0x28], 6
+      call    flag.(*FlagSet).Uint
+      mov     rax, [rsp+0x30]
+      mov     [rsp+0x70], rax
+      mov     rcx, [flag.CommandLine]
+      mov     [rsp], rcx
+      lea     rcx, [mem11]; "qstw + @ P [) )()\n, ->0s25: >..."
+      mov     [rsp+8], rcx
+      mov     [rsp+0x10], 1
+      mov     [rsp+0x18], 0
+      lea     rcx, [mem12]; "quietsleepslicesse41sse42ssse..."
+      mov     [rsp+0x20], rcx
+      mov     [rsp+0x28], 5
+      call    flag.(*FlagSet).Bool
+      mov     rax, [rsp+0x30]
+      mov     [rsp+0x68], rax
+      mov     rcx, [flag.CommandLine]
+      mov     [rsp], rcx
+      lea     rcx, [mem13]; "stw + @ P [) )()\n, ->0s25: > ..."
+      mov     [rsp+8], rcx
+      mov     [rsp+0x10], 1
+      mov     [rsp+0x18], 0
+      lea     rcx, [mem14]; "seedsse2sse3trueuint  -%s ......"
+      mov     [rsp+0x20], rcx
+      mov     [rsp+0x28], 4
+      call    flag.(*FlagSet).Int64
+      mov     rax, [rsp+0x30]
+      mov     rcx, [os.Args]
+      mov     rdx, [mem1]
+      mov     rbx, [mem15]
+      cmp     rdx, 1
+      jb      block23
+    block5:
+      mov     [rsp+0x60], rax
+      mov     rax, [flag.CommandLine]
+      mov     [rsp], rax
+      lea     rax, [rbx-1]
+      mov     rbx, rax
+      neg     rax
+      sar     rax, 0x3f
+      and     rax, 0x10
+      add     rax, rcx
+      mov     [rsp+8], rax
+      lea     rax, [rdx-1]
+      mov     [rsp+0x10], rax
+      mov     [rsp+0x18], rbx
+      call    flag.(*FlagSet).Parse
+      mov     rax, [rsp+0x60]
+      mov     rax, [rax]
+      test    rax, rax
+      jne     block21
+    block6:
+      call    time.Now
+      mov     rax, [rsp+8]
+      mov     rcx, [rsp]
+      bt      rcx, 0x3f
+      jae     block20
+    block7:
+      mov     rax, rcx
+      shl     rcx, 1
+      shr     rcx, 0x1f
+      movabs  rdx, 0xdd7b17f80
+      add     rcx, rdx
+    block8:
+      mov     rdx, [math/rand.globalRand]
+      mov     [rsp], rdx
+      imul    rcx, rcx, 0x3b9aca00
+      and     rax, 0x3fffffff
+      movsxd  rax, eax
+      add     rax, rcx
+      movabs  rcx, -0x5e4dfc14c2e60000
+      add     rax, rcx
+      mov     [rsp+8], rax
+      call    math/rand.(*Rand).Seed
+    block9:
+      mov     [rsp], 8
+      lea     rax, [mem16]
+      mov     [rsp+8], rax
+      mov     rax, [rsp+0x70]
+      mov     [rsp+0x10], rax
+      call    runtime.newproc
+      mov     rax, [rsp+0x58]
+      mov     rax, [rax]
+      mov     rcx, [rsp+0x78]
+      mov     rcx, [rcx]
+      mov     [rsp], rax
+      mov     [rsp+8], rcx
+      call    main.NewField
+      mov     rax, [rsp+0x10]
+      mov     [rsp+0x88], rax
+      mov     [rsp], rax
+      call    main.(*Field).Seed
+      mov     rax, [rsp+0x70]
+      mov     rcx, [rsp+0x88]
+      xor     edx, edx
+      jmp     block11
+    block10:
+      mov     rbx, [rsp+0x50]
+      lea     rdx, [rbx+1]
+      mov     rbx, [rsp+0x70]
+      mov     rsi, [rsp+0x88]
+      mov     rax, rbx
+      mov     rcx, rsi
+    block11:
+      mov     [rsp+0x50], rdx
+      mov     rbx, [rax]
+      test    rbx, rbx
+      jne     block16
+    block12:
+      mov     [rsp], rcx
+      call    main.(*Field).Step
+      mov     rax, [rsp+0x68]
+      cmp     [rax], 0
+      jne     block10
+    block13:
+      mov     rcx, [rsp+0x50]
+      test    rcx, rcx
+      jne     block15
+    block14:
+      mov     rax, [rsp+0x88]
+      mov     [rsp], rax
+      call    main.(*Field).Draw
+      mov     rax, [rsp+0x80]
+      mov     rcx, [rax]
+      mov     [rsp], rcx
+      call    time.Sleep
+      mov     rax, [rsp+0x68]
+      jmp     block10
+    block15:
+      mov     rax, [rsp+0x88]
+      mov     rcx, [rax+8]
+      dec     rcx
+      mov     [rsp], rcx
+      call    runtime.convT64
+      mov     rax, [rsp+8]
+      xorps   xmm0, xmm0
+      movups  [rsp+0x90], xmm0
+      lea     rcx, [mem17]
+      mov     [rsp+0x90], rcx
+      mov     [rsp+0x98], rax
+      mov     rax, [os.Stdout]
+      lea     rdx, [go.itab.*os.File,io.Writer]
+      mov     [rsp], rdx
+      mov     [rsp+8], rax
+      lea     rax, [mem18]; "\u001b[%dFargp=arrayclosefalsefaul..."
+      mov     [rsp+0x10], rax
+      mov     [rsp+0x18], 5
+      lea     rbx, [rsp+0x90]
+      mov     [rsp+0x20], rbx
+      mov     [rsp+0x28], 1
+      mov     [rsp+0x30], 1
+      call    fmt.Fprintf
+      jmp     block14
+    block16:
+      cmp     rdx, rbx
+      jb      block12
+    block17:
+      mov     rax, [rsp+0x68]
+      cmp     [rax], 0
+      jne     block19
+    block18:
+      mov     rbp, [rsp+0xa0]
+      add     rsp, 0xa8
+      ret
+    block19:
+      mov     [rsp], rcx
+      call    main.(*Field).Draw
+      jmp     block18
+    block20:
+      mov     rdx, rax
+      mov     rax, rcx
+      mov     rcx, rdx
+      jmp     block8
+    block21:
+      mov     rcx, [math/rand.globalRand]
+      mov     [rsp], rcx
+      mov     [rsp+8], rax
+      call    math/rand.(*Rand).Seed
+      jmp     block9
+    block22:
+      lea     rax, [mem2]; "goaliehangupheightkilledobjec..."
+      call    runtime.gcWriteBarrier
+      jmp     block4
+    block23:
+      mov     eax, 1
+      mov     rcx, rdx
+      call    runtime.panicSliceB
+    block24:
+      xor     eax, eax
+      call    runtime.panicIndex
+    block25:
+      call    runtime.morestack_noctxt
+      jmp     main.main
+    block26:
+      int3
+"main.main.func1":
+  "asm": |
+    main.main.func1:
+      mov     rcx, fs:[-8]
+      cmp     rsp, [rcx+0x10]
+      jbe     block2
+    block1:
+      sub     rsp, 0x50
+      mov     [rsp+0x48], rbp
+      lea     rbp, [rsp+0x48]
+      lea     rax, [mem1]
+      mov     [rsp], rax
+      mov     [rsp+8], 1
+      call    runtime.makechan
+      mov     rax, [rsp+0x10]
+      mov     [rsp+0x20], rax
+      xorps   xmm0, xmm0
+      movups  [rsp+0x28], xmm0
+      movups  [rsp+0x38], xmm0
+      lea     rcx, [go.itab.syscall.Signal,os.Signal]; " ~L"
+      mov     [rsp+0x28], rcx
+      lea     rdx, [mem2]
+      mov     [rsp+0x30], rdx
+      mov     [rsp+0x38], rcx
+      lea     rcx, [mem3]
+      mov     [rsp+0x40], rcx
+      mov     [rsp], rax
+      lea     rcx, [rsp+0x28]
+      mov     [rsp+8], rcx
+      mov     [rsp+0x10], 2
+      mov     [rsp+0x18], 2
+      call    os/signal.Notify
+      mov     rax, [rsp+0x20]
+      mov     [rsp], rax
+      mov     [rsp+8], 0
+      call    runtime.chanrecv1
+      mov     rax, [rsp+0x58]
+      mov     [rax], 1
+      mov     rbp, [rsp+0x48]
+      add     rsp, 0x50
+      ret
+    block2:
+      call    runtime.morestack_noctxt
+      jmp     main.main.func1
+    block3:
+      int3

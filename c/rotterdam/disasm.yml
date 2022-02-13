@@ -1,0 +1,379 @@
+"domp":
+  "asm": |
+    domp:
+      endbr64
+      push    rbp
+      mov     rbp, rsp
+      sub     rsp, 0x10
+      mov     [rbp-8], rdi
+      mov     [rbp-0x10], rsi
+      mov     rax, [rbp-8]
+      mov     rdi, rax
+      call    slenk
+      sub     eax, 1
+      movsxd  rdx, eax
+      mov     rax, [rbp-8]
+      mov     rsi, rax
+      mov     edi, 2
+      call    write@plt.sec
+      mov     rax, [rbp-0x10]
+      mov     rdi, rax
+      call    slenk
+      sub     eax, 1
+      movsxd  rdx, eax
+      mov     rax, [rbp-0x10]
+      mov     rsi, rax
+      mov     edi, 2
+      call    write@plt.sec
+      mov     edx, 1
+      lea     rsi, [mem1]; "\n"
+      mov     edi, 2
+      call    write@plt.sec
+      leave
+      ret
+"main":
+  "asm": |
+    main:
+      endbr64
+      push    rbp
+      mov     rbp, rsp
+      sub     rsp, 0x20
+      mov     [rbp-0x14], edi
+      mov     [rbp-0x20], rsi
+      mov     rdx, [rbp-0x20]
+      mov     eax, [rbp-0x14]
+      mov     rsi, rdx
+      mov     edi, eax
+      call    reed
+      mov     [rbp-8], eax
+      mov     eax, [optind]
+      cmp     [rbp-0x14], eax
+      jg      block6
+    block1:
+      mov     eax, [rbp-8]
+      mov     esi, eax
+      mov     edi, 0
+      call    pype
+      mov     eax, 0
+      jmp     block8
+    block2:
+      mov     eax, [optind]
+      cdqe
+      lea     rdx, [rax * 8]
+      mov     rax, [rbp-0x20]
+      add     rax, rdx
+      mov     rax, [rax]
+      mov     esi, 0
+      mov     rdi, rax
+      mov     eax, 0
+      call    open@plt.sec
+      mov     [rbp-4], eax
+      cmp     [rbp-4], 0
+      jns     block4
+    block3:
+      mov     eax, [optind]
+      cdqe
+      lea     rdx, [rax * 8]
+      mov     rax, [rbp-0x20]
+      add     rax, rdx
+      mov     rax, [rax]
+      mov     rsi, rax
+      lea     rdi, [mem1]; "Could not open file: "
+      call    domp
+      jmp     block5
+    block4:
+      mov     edx, [rbp-8]
+      mov     eax, [rbp-4]
+      mov     esi, edx
+      mov     edi, eax
+      call    pype
+      mov     eax, [rbp-4]
+      mov     edi, eax
+      call    close@plt.sec
+    block5:
+      mov     eax, [optind]
+      add     eax, 1
+      mov     [optind], eax
+    block6:
+      mov     eax, [optind]
+      cmp     [rbp-0x14], eax
+      jg      block2
+    block7:
+      mov     eax, 0
+    block8:
+      leave
+      ret
+"pype":
+  "asm": |
+    pype:
+      endbr64
+      push    rbp
+      mov     rbp, rsp
+      sub     rsp, 0x20
+      mov     [rbp-0x14], edi
+      mov     [rbp-0x18], esi
+      mov     rax, fs:[0x28]
+      mov     [rbp-8], rax
+      xor     eax, eax
+      jmp     block2
+    block1:
+      movzx   eax, [rbp-9]
+      movsx   edx, al
+      mov     eax, [rbp-0x18]
+      mov     esi, edx
+      mov     edi, eax
+      call    rote
+      mov     [rbp-9], al
+      lea     rax, [rbp-9]
+      mov     edx, 1
+      mov     rsi, rax
+      mov     edi, 1
+      call    write@plt.sec
+    block2:
+      lea     rcx, [rbp-9]
+      mov     eax, [rbp-0x14]
+      mov     edx, 1
+      mov     rsi, rcx
+      mov     edi, eax
+      call    read@plt.sec
+      test    rax, rax
+      jne     block1
+    block3:
+      mov     rax, [rbp-8]
+      xor     rax, fs:[0x28]
+      je      block5
+    block4:
+      call    __stack_chk_fail@plt.sec
+    block5:
+      leave
+      ret
+"reed":
+  "asm": |
+    reed:
+      endbr64
+      push    rbp
+      mov     rbp, rsp
+      sub     rsp, 0xb0
+      mov     [rbp-0xa4], edi
+      mov     [rbp-0xb0], rsi
+      mov     rax, fs:[0x28]
+      mov     [rbp-8], rax
+      xor     eax, eax
+      lea     rax, [mem1]; "encrypt"
+      mov     [rbp-0x90], rax
+      mov     [rbp-0x88], 0
+      mov     [rbp-0x80], 0
+      mov     [rbp-0x78], 0x65
+      lea     rax, [mem2]; "decrypt"
+      mov     [rbp-0x70], rax
+      mov     [rbp-0x68], 0
+      mov     [rbp-0x60], 0
+      mov     [rbp-0x58], 0x64
+      lea     rax, [mem3]; "key"
+      mov     [rbp-0x50], rax
+      mov     [rbp-0x48], 1
+      mov     [rbp-0x40], 0
+      mov     [rbp-0x38], 0x6b
+      mov     [rbp-0x30], 0
+      mov     [rbp-0x28], 0
+      mov     [rbp-0x20], 0
+      mov     [rbp-0x18], 0
+      mov     [rbp-0x9c], 0
+      mov     [rbp-0x98], 0
+    block1:
+      lea     rcx, [rbp-0xa0]
+      lea     rdx, [rbp-0x90]
+      mov     rsi, [rbp-0xb0]
+      mov     eax, [rbp-0xa4]
+      mov     r8, rcx
+      mov     rcx, rdx
+      lea     rdx, [mem4]; "edk:"
+      mov     edi, eax
+      call    getopt_long@plt.sec
+      mov     [rbp-0x94], eax
+      cmp     [rbp-0x94], 0
+      js      block14
+    block2:
+      cmp     [rbp-0x94], 0x6b
+      je      block8
+    block3:
+      cmp     [rbp-0x94], 0x6b
+      jg      block11
+    block4:
+      cmp     [rbp-0x94], 0x64
+      je      block7
+    block5:
+      cmp     [rbp-0x94], 0x65
+      jne     block11
+    block6:
+      mov     [rbp-0x9c], 0
+      jmp     block13
+    block7:
+      mov     [rbp-0x9c], 1
+      jmp     block13
+    block8:
+      mov     rax, [optarg]
+      mov     rdi, rax
+      call    slurp
+      mov     [rbp-0x98], eax
+      cmp     [rbp-0x98], 0
+      jle     block10
+    block9:
+      cmp     [rbp-0x98], 0x19
+      jle     block12
+    block10:
+      mov     rax, [optarg]
+      mov     rsi, rax
+      lea     rdi, [mem5]; "Invalid key: "
+      call    domp
+    block11:
+      mov     edi, 1
+      call    _exit@plt.sec
+    block12:
+    block13:
+      jmp     block1
+    block14:
+      cmp     [rbp-0x98], 0
+      jne     block16
+    block15:
+      mov     edx, 0xe
+      lea     rsi, [mem6]; "Key required.\n"
+      mov     edi, 2
+      call    write@plt.sec
+      mov     edi, 1
+      call    _exit@plt.sec
+    block16:
+      cmp     [rbp-0x9c], 0
+      je      block18
+    block17:
+      mov     eax, 0x1a
+      sub     eax, [rbp-0x98]
+      mov     [rbp-0x98], eax
+    block18:
+      mov     eax, [rbp-0x98]
+      mov     rcx, [rbp-8]
+      xor     rcx, fs:[0x28]
+      je      block20
+    block19:
+      call    __stack_chk_fail@plt.sec
+    block20:
+      leave
+      ret
+"rote":
+  "asm": |
+    rote:
+      endbr64
+      push    rbp
+      mov     rbp, rsp
+      mov     [rbp-0x14], edi
+      mov     eax, esi
+      mov     [rbp-0x18], al
+      cmp     [rbp-0x18], 0x5a
+      jg      block3
+    block1:
+      cmp     [rbp-0x18], 0x40
+      jle     block3
+    block2:
+      mov     [rbp-4], 0x41
+      jmp     block7
+    block3:
+      cmp     [rbp-0x18], 0x7a
+      jg      block6
+    block4:
+      cmp     [rbp-0x18], 0x60
+      jle     block6
+    block5:
+      mov     [rbp-4], 0x61
+      jmp     block7
+    block6:
+      movzx   eax, [rbp-0x18]
+      jmp     block8
+    block7:
+      movsx   eax, [rbp-0x18]
+      sub     eax, [rbp-4]
+      mov     edx, eax
+      mov     eax, [rbp-0x14]
+      add     eax, edx
+      movsxd  rdx, eax
+      imul    rdx, rdx, 0x4ec4ec4f
+      shr     rdx, 0x20
+      mov     ecx, edx
+      sar     ecx, 3
+      cdq
+      sub     ecx, edx
+      mov     edx, ecx
+      imul    edx, edx, 0x1a
+      sub     eax, edx
+      mov     edx, eax
+      mov     eax, [rbp-4]
+      add     eax, edx
+    block8:
+      pop     rbp
+      ret
+"slenk":
+  "asm": |
+    slenk:
+      endbr64
+      push    rbp
+      mov     rbp, rsp
+      mov     [rbp-0x18], rdi
+      mov     [rbp-4], 0
+    block1:
+      mov     eax, [rbp-4]
+      lea     edx, [rax+1]
+      mov     [rbp-4], edx
+      movsxd  rdx, eax
+      mov     rax, [rbp-0x18]
+      add     rax, rdx
+      movzx   eax, [rax]
+      test    al, al
+      jne     block1
+    block2:
+      mov     eax, [rbp-4]
+      pop     rbp
+      ret
+"slurp":
+  "asm": |
+    slurp:
+      endbr64
+      push    rbp
+      mov     rbp, rsp
+      mov     [rbp-0x18], rdi
+      mov     [rbp-8], 0
+      jmp     block5
+    block1:
+      mov     rax, [rbp-0x18]
+      lea     rdx, [rax+1]
+      mov     [rbp-0x18], rdx
+      movzx   eax, [rax]
+      movsx   eax, al
+      sub     eax, 0x30
+      mov     [rbp-4], eax
+      cmp     [rbp-4], 0
+      js      block3
+    block2:
+      cmp     [rbp-4], 9
+      jle     block4
+    block3:
+      mov     eax, 0
+      jmp     block7
+    block4:
+      mov     edx, [rbp-8]
+      mov     eax, edx
+      shl     eax, 2
+      add     eax, edx
+      add     eax, eax
+      mov     edx, eax
+      mov     eax, [rbp-4]
+      add     eax, edx
+      mov     [rbp-8], eax
+    block5:
+      mov     rax, [rbp-0x18]
+      movzx   eax, [rax]
+      test    al, al
+      jne     block1
+    block6:
+      mov     eax, [rbp-8]
+    block7:
+      pop     rbp
+      ret

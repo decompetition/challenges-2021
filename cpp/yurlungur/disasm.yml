@@ -1,0 +1,290 @@
+"_Z6createiPPc":
+  "asm": |
+    _Z6createiPPc:
+      endbr64
+      push    rbp
+      mov     rbp, rsp
+      push    r12
+      push    rbx
+      sub     rsp, 0x1000
+      or      [rsp], 0
+      sub     rsp, 0x3c0
+      mov     [rbp-0x13b8], rdi
+      mov     [rbp-0x13bc], esi
+      mov     [rbp-0x13c8], rdx
+      mov     rax, fs:[0x28]
+      mov     [rbp-0x18], rax
+      xor     eax, eax
+      cmp     [rbp-0x13bc], 1
+      jne     block2
+    block1:
+      lea     rax, [rbp-0x13a0]
+      mov     rdi, rax
+      call    _ZNSt13random_deviceC1Ev
+      lea     rax, [rbp-0x13a0]
+      mov     rdi, rax
+      call    _ZNSt13random_deviceclEv
+      mov     eax, eax
+      mov     [rbp-0x13a8], rax
+      lea     rax, [rbp-0x13a0]
+      mov     rdi, rax
+      call    _ZNSt13random_deviceD1Ev
+      mov     rdx, [rbp-0x13a8]
+      mov     rax, [rbp-0x13b8]
+      mov     rsi, rdx
+      mov     rdi, rax
+      call    _ZNSt23mersenne_twister_engineImLm64ELm312ELm156ELm31ELm13043109905998158313ELm29ELm6148914691236517205ELm17ELm8202884508482404352ELm37ELm18444473444759240704ELm43ELm6364136223846793005EEC2Em
+      jmp     block5
+    block2:
+      cmp     [rbp-0x13bc], 2
+      jne     block4
+    block3:
+      mov     rax, [rbp-0x13c8]
+      add     rax, 8
+      mov     rax, [rax]
+      mov     rdi, rax
+      call    atoi@plt.sec
+      cdqe
+      mov     [rbp-0x13b0], rax
+      mov     rdx, [rbp-0x13b0]
+      mov     rax, [rbp-0x13b8]
+      mov     rsi, rdx
+      mov     rdi, rax
+      call    _ZNSt23mersenne_twister_engineImLm64ELm312ELm156ELm31ELm13043109905998158313ELm29ELm6148914691236517205ELm17ELm8202884508482404352ELm37ELm18444473444759240704ELm43ELm6364136223846793005EEC2Em
+      jmp     block5
+    block4:
+      mov     edi, 0x10
+      call    __cxa_allocate_exception@plt.sec
+      mov     rbx, rax
+      lea     rsi, [mem1]; "The serpent devours you."
+      mov     rdi, rbx
+      call    _ZNSt13runtime_errorC1EPKc@plt.sec
+      mov     rax, [_ZNSt13runtime_errorD1Ev]
+      mov     rdx, rax
+      lea     rsi, [_ZTISt13runtime_error]
+      mov     rdi, rbx
+      call    __cxa_throw@plt.sec
+      endbr64
+      mov     rbx, rax
+      lea     rax, [rbp-0x13a0]
+      mov     rdi, rax
+      call    _ZNSt13random_deviceD1Ev
+      mov     rax, rbx
+      mov     rdi, rax
+      call    _Unwind_Resume@plt.sec
+      endbr64
+      mov     r12, rax
+      mov     rdi, rbx
+      call    __cxa_free_exception@plt.sec
+      mov     rax, r12
+      mov     rdi, rax
+      call    _Unwind_Resume@plt.sec
+    block5:
+      mov     rax, [rbp-0x18]
+      xor     rax, fs:[0x28]
+      je      block7
+    block6:
+      call    __stack_chk_fail@plt.sec
+    block7:
+      mov     rax, [rbp-0x13b8]
+      add     rsp, 0x13c0
+      pop     rbx
+      pop     r12
+      pop     rbp
+      ret
+"_Z6escapePh":
+  "asm": |
+    _Z6escapePh:
+      endbr64
+      push    rbp
+      mov     rbp, rsp
+      mov     [rbp-8], rdi
+      mov     rax, [rbp-8]
+      movzx   eax, [rax]
+      movzx   edx, al
+      mov     eax, edx
+      shl     eax, 3
+      add     eax, edx
+      shl     eax, 2
+      mov     ecx, eax
+      mov     rax, [rbp-8]
+      add     rax, 1
+      movzx   eax, [rax]
+      movzx   edx, al
+      mov     eax, edx
+      add     eax, eax
+      add     eax, edx
+      add     eax, eax
+      lea     edx, [rcx+rax]
+      mov     rax, [rbp-8]
+      add     rax, 2
+      movzx   eax, [rax]
+      movzx   eax, al
+      add     eax, edx
+      add     eax, 0x10
+      pop     rbp
+      ret
+? |-
+  _Z6mutateRSt23mersenne_twister_engineImLm64ELm312ELm156ELm31ELm13043109905998158313ELm29ELm6148914691236517205ELm17ELm8202884508482404352ELm37ELm18444473444759240704ELm43ELm6364136223846793005EEPh
+: "asm": |
+    _Z6mutateRSt23mersenne_twister_engineImLm64ELm312ELm156ELm31ELm13043109905998158313ELm29ELm6148914691236517205ELm17ELm8202884508482404352ELm37ELm18444473444759240704ELm43ELm6364136223846793005EEPh:
+      endbr64
+      push    rbp
+      mov     rbp, rsp
+      sub     rsp, 0x30
+      mov     [rbp-0x28], rdi
+      mov     [rbp-0x30], rsi
+      mov     rax, fs:[0x28]
+      mov     [rbp-8], rax
+      xor     eax, eax
+      lea     rax, [rbp-0x18]
+      mov     edx, 2
+      mov     esi, 0
+      mov     rdi, rax
+      call    _ZNSt24uniform_int_distributionIiEC2Eii
+      lea     rax, [rbp-0x10]
+      mov     edx, 1
+      mov     esi, 0
+      mov     rdi, rax
+      call    _ZNSt24uniform_int_distributionIiEC2Eii
+      mov     rdx, [rbp-0x28]
+      lea     rax, [rbp-0x18]
+      mov     rsi, rdx
+      mov     rdi, rax
+      call    _ZNSt24uniform_int_distributionIiEclISt23mersenne_twister_engineImLm64ELm312ELm156ELm31ELm13043109905998158313ELm29ELm6148914691236517205ELm17ELm8202884508482404352ELm37ELm18444473444759240704ELm43ELm6364136223846793005EEEEiRT_
+      movsxd  rdx, eax
+      mov     rax, [rbp-0x30]
+      add     rax, rdx
+      mov     [rbp-0x20], rax
+      mov     rdx, [rbp-0x28]
+      lea     rax, [rbp-0x10]
+      mov     rsi, rdx
+      mov     rdi, rax
+      call    _ZNSt24uniform_int_distributionIiEclISt23mersenne_twister_engineImLm64ELm312ELm156ELm31ELm13043109905998158313ELm29ELm6148914691236517205ELm17ELm8202884508482404352ELm37ELm18444473444759240704ELm43ELm6364136223846793005EEEEiRT_
+      add     eax, eax
+      lea     edx, [rax-1]
+      mov     rax, [rbp-0x20]
+      movzx   eax, [rax]
+      add     edx, eax
+      mov     rax, [rbp-0x20]
+      mov     [rax], dl
+      mov     rax, [rbp-0x20]
+      movzx   eax, [rax]
+      cmp     al, 9
+      jbe     block2
+    block1:
+      mov     rax, [rbp-0x20]
+      mov     [rax], 1
+    block2:
+      mov     rax, [rbp-0x20]
+      movzx   eax, [rax]
+      cmp     al, 5
+      jbe     block4
+    block3:
+      mov     rax, [rbp-0x20]
+      mov     [rax], 4
+    block4:
+      mov     rax, [rbp-8]
+      xor     rax, fs:[0x28]
+      je      block6
+    block5:
+      call    __stack_chk_fail@plt.sec
+    block6:
+      leave
+      ret
+"main":
+  "asm": |
+    main:
+      endbr64
+      push    rbp
+      mov     rbp, rsp
+      push    rbx
+      sub     rsp, 0xa08
+      mov     [rbp-0xa04], edi
+      mov     [rbp-0xa10], rsi
+      mov     rax, fs:[0x28]
+      mov     [rbp-0x18], rax
+      xor     eax, eax
+      lea     rax, [rbp-0x9f0]
+      mov     rdx, [rbp-0xa10]
+      mov     ecx, [rbp-0xa04]
+      mov     esi, ecx
+      mov     rdi, rax
+      call    _Z6createiPPc
+      lea     rax, [rbp-0x9f2]
+      mov     edx, 5
+      mov     esi, 0
+      mov     rdi, rax
+      call    _ZNSt24uniform_int_distributionIhEC2Ehh
+      lea     rdx, [rbp-0x9f0]
+      lea     rax, [rbp-0x9f2]
+      mov     rsi, rdx
+      mov     rdi, rax
+      call    _ZNSt24uniform_int_distributionIhEclISt23mersenne_twister_engineImLm64ELm312ELm156ELm31ELm13043109905998158313ELm29ELm6148914691236517205ELm17ELm8202884508482404352ELm37ELm18444473444759240704ELm43ELm6364136223846793005EEEEhRT_
+      mov     [rbp-0x1b], al
+      lea     rdx, [rbp-0x9f0]
+      lea     rax, [rbp-0x9f2]
+      mov     rsi, rdx
+      mov     rdi, rax
+      call    _ZNSt24uniform_int_distributionIhEclISt23mersenne_twister_engineImLm64ELm312ELm156ELm31ELm13043109905998158313ELm29ELm6148914691236517205ELm17ELm8202884508482404352ELm37ELm18444473444759240704ELm43ELm6364136223846793005EEEEhRT_
+      mov     [rbp-0x1a], al
+      lea     rdx, [rbp-0x9f0]
+      lea     rax, [rbp-0x9f2]
+      mov     rsi, rdx
+      mov     rdi, rax
+      call    _ZNSt24uniform_int_distributionIhEclISt23mersenne_twister_engineImLm64ELm312ELm156ELm31ELm13043109905998158313ELm29ELm6148914691236517205ELm17ELm8202884508482404352ELm37ELm18444473444759240704ELm43ELm6364136223846793005EEEEhRT_
+      mov     [rbp-0x19], al
+    block1:
+      lea     rax, [rbp-0x9f3]
+      mov     rsi, rax
+      lea     rdi, [_ZSt3cin]
+      call    _ZNSi3getERc@plt.sec
+      mov     rdx, [rax]
+      sub     rdx, 0x18
+      mov     rdx, [rdx]
+      add     rax, rdx
+      mov     rdi, rax
+      call    _ZNKSt9basic_iosIcSt11char_traitsIcEEcvbEv@plt.sec
+      test    al, al
+      je      block3
+    block2:
+      lea     rsi, [mem1]; "\u001b[38;5;"
+      lea     rdi, [_ZSt4cout]
+      call    _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@plt.sec
+      mov     rbx, rax
+      lea     rax, [rbp-0x1b]
+      mov     rdi, rax
+      call    _Z6escapePh
+      mov     esi, eax
+      mov     rdi, rbx
+      call    _ZNSolsEi@plt.sec
+      mov     esi, 0x6d
+      mov     rdi, rax
+      call    _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_c@plt.sec
+      mov     rdx, rax
+      movzx   eax, [rbp-0x9f3]
+      movsx   eax, al
+      mov     esi, eax
+      mov     rdi, rdx
+      call    _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_c@plt.sec
+      lea     rdx, [rbp-0x1b]
+      lea     rax, [rbp-0x9f0]
+      mov     rsi, rdx
+      mov     rdi, rax
+      call    _Z6mutateRSt23mersenne_twister_engineImLm64ELm312ELm156ELm31ELm13043109905998158313ELm29ELm6148914691236517205ELm17ELm8202884508482404352ELm37ELm18444473444759240704ELm43ELm6364136223846793005EEPh
+      jmp     block1
+    block3:
+      lea     rsi, [mem2]; "\u001b[0m"
+      lea     rdi, [_ZSt4cout]
+      call    _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@plt.sec
+      mov     eax, 0
+      mov     rcx, [rbp-0x18]
+      xor     rcx, fs:[0x28]
+      je      block5
+    block4:
+      call    __stack_chk_fail@plt.sec
+    block5:
+      add     rsp, 0xa08
+      pop     rbx
+      pop     rbp
+      ret

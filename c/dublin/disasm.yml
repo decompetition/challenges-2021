@@ -1,0 +1,295 @@
+"insert":
+  "asm": |
+    insert:
+      endbr64
+      push    rbp
+      mov     rbp, rsp
+      sub     rsp, 0x30
+      mov     [rbp-0x14], edi
+      mov     [rbp-0x20], rsi
+      mov     [rbp-0x28], rdx
+      mov     edi, 0x10
+      call    malloc@plt.sec
+      mov     [rbp-8], rax
+      mov     rdx, [rbp-0x20]
+      mov     rax, [rbp-0x28]
+      xor     rdx, rax
+      mov     rax, [rbp-8]
+      mov     [rax], rdx
+      mov     rax, [rbp-8]
+      mov     edx, [rbp-0x14]
+      mov     [rax+8], edx
+      cmp     [rbp-0x20], 0
+      je      block2
+    block1:
+      mov     rax, [rbp-0x20]
+      mov     rax, [rax]
+      mov     rcx, [rbp-8]
+      mov     rdx, [rbp-0x28]
+      xor     rdx, rcx
+      xor     rdx, rax
+      mov     rax, [rbp-0x20]
+      mov     [rax], rdx
+    block2:
+      cmp     [rbp-0x28], 0
+      je      block4
+    block3:
+      mov     rax, [rbp-0x28]
+      mov     rax, [rax]
+      mov     rcx, [rbp-8]
+      mov     rdx, [rbp-0x20]
+      xor     rdx, rcx
+      xor     rdx, rax
+      mov     rax, [rbp-0x28]
+      mov     [rax], rdx
+    block4:
+      mov     rax, [rbp-8]
+      leave
+      ret
+"main":
+  "asm": |
+    main:
+      endbr64
+      push    rbp
+      mov     rbp, rsp
+      sub     rsp, 0x50
+      mov     [rbp-0x44], edi
+      mov     [rbp-0x50], rsi
+      mov     rax, fs:[0x28]
+      mov     [rbp-8], rax
+      xor     eax, eax
+      mov     [rbp-0x30], 0
+      mov     [rbp-0x28], 0
+      mov     [rbp-0x20], 0
+      mov     [rbp-0x18], 0
+      mov     [rbp-0x10], 0
+    block1:
+      mov     [rbp-0x34], 0
+      lea     rax, [rbp-0x34]
+      mov     rsi, rax
+      lea     rdi, [mem1]; "%d"
+      mov     eax, 0
+      call    __isoc99_scanf@plt.sec
+      cmp     eax, 1
+      je      block6
+    block2:
+      cmp     [rbp-0x30], 0
+      jne     block22
+    block3:
+      jmp     block24
+    block4:
+      mov     rax, [rbp-0x18]
+      mov     [rbp-0x10], rax
+      mov     rax, [rbp-0x20]
+      mov     [rbp-0x18], rax
+      cmp     [rbp-0x20], 0
+      je      block6
+    block5:
+      mov     rax, [rbp-0x20]
+      mov     rdx, [rax]
+      mov     rax, [rbp-0x10]
+      xor     rax, rdx
+      mov     [rbp-0x20], rax
+    block6:
+      cmp     [rbp-0x18], 0
+      je      block11
+    block7:
+      mov     rax, [rbp-0x18]
+      mov     edx, [rax+8]
+      mov     eax, [rbp-0x34]
+      cmp     edx, eax
+      jg      block4
+    block8:
+      jmp     block11
+    block9:
+      mov     rax, [rbp-0x18]
+      mov     [rbp-0x20], rax
+      mov     rax, [rbp-0x10]
+      mov     [rbp-0x18], rax
+      cmp     [rbp-0x10], 0
+      je      block11
+    block10:
+      mov     rax, [rbp-0x10]
+      mov     rdx, [rax]
+      mov     rax, [rbp-0x20]
+      xor     rax, rdx
+      mov     [rbp-0x10], rax
+    block11:
+      cmp     [rbp-0x18], 0
+      je      block13
+    block12:
+      mov     rax, [rbp-0x18]
+      mov     edx, [rax+8]
+      mov     eax, [rbp-0x34]
+      cmp     edx, eax
+      jl      block9
+    block13:
+      cmp     [rbp-0x18], 0
+      je      block18
+    block14:
+      mov     rax, [rbp-0x18]
+      mov     edx, [rax+8]
+      mov     eax, [rbp-0x34]
+      cmp     edx, eax
+      jg      block16
+    block15:
+      mov     rax, [rbp-0x18]
+      mov     [rbp-0x20], rax
+    block16:
+      mov     rax, [rbp-0x18]
+      mov     edx, [rax+8]
+      mov     eax, [rbp-0x34]
+      cmp     edx, eax
+      jle     block18
+    block17:
+      mov     rax, [rbp-0x18]
+      mov     [rbp-0x10], rax
+    block18:
+      mov     eax, [rbp-0x34]
+      mov     rdx, [rbp-0x10]
+      mov     rcx, [rbp-0x20]
+      mov     rsi, rcx
+      mov     edi, eax
+      call    insert
+      mov     [rbp-0x18], rax
+      cmp     [rbp-0x20], 0
+      jne     block20
+    block19:
+      mov     rax, [rbp-0x18]
+      mov     [rbp-0x30], rax
+    block20:
+      cmp     [rbp-0x10], 0
+      jne     block1
+    block21:
+      mov     rax, [rbp-0x18]
+      mov     [rbp-0x28], rax
+      jmp     block1
+    block22:
+      cmp     [rbp-0x28], 0
+      je      block24
+    block23:
+      lea     rdi, [mem2]; "Forward:"
+      call    puts@plt.sec
+      mov     rax, [rbp-0x30]
+      lea     rsi, [mem3]; "smallest"
+      mov     rdi, rax
+      call    walk
+      lea     rdi, [mem4]; "Reverse:"
+      call    puts@plt.sec
+      mov     rax, [rbp-0x28]
+      lea     rsi, [mem5]; "largest"
+      mov     rdi, rax
+      call    walk
+    block24:
+      mov     eax, 0
+      mov     rcx, [rbp-8]
+      xor     rcx, fs:[0x28]
+      je      block26
+    block25:
+      call    __stack_chk_fail@plt.sec
+    block26:
+      leave
+      ret
+"walk":
+  "asm": |
+    walk:
+      endbr64
+      push    rbp
+      mov     rbp, rsp
+      sub     rsp, 0x30
+      mov     [rbp-0x28], rdi
+      mov     [rbp-0x30], rsi
+      mov     [rbp-0x18], 0
+      mov     [rbp-0x20], 1
+      jmp     block6
+    block1:
+      lea     rax, [mem1]; "th"
+      mov     [rbp-0x10], rax
+      mov     eax, [rbp-0x20]
+      movsxd  rdx, eax
+      imul    rdx, rdx, 0x51eb851f
+      shr     rdx, 0x20
+      mov     ecx, edx
+      sar     ecx, 5
+      cdq
+      sub     ecx, edx
+      mov     edx, ecx
+      imul    edx, edx, 0x64
+      sub     eax, edx
+      mov     edx, eax
+      cmp     edx, 9
+      jle     block3
+    block2:
+      mov     eax, [rbp-0x20]
+      movsxd  rdx, eax
+      imul    rdx, rdx, 0x51eb851f
+      shr     rdx, 0x20
+      mov     ecx, edx
+      sar     ecx, 5
+      cdq
+      sub     ecx, edx
+      mov     edx, ecx
+      imul    edx, edx, 0x64
+      sub     eax, edx
+      mov     edx, eax
+      cmp     edx, 0x14
+      jle     block5
+    block3:
+      mov     eax, [rbp-0x20]
+      lea     edx, [rax-1]
+      movsxd  rax, edx
+      imul    rax, rax, 0x66666667
+      shr     rax, 0x20
+      mov     ecx, eax
+      sar     ecx, 2
+      mov     eax, edx
+      sar     eax, 0x1f
+      sub     ecx, eax
+      mov     eax, ecx
+      mov     [rbp-0x1c], eax
+      mov     ecx, [rbp-0x1c]
+      mov     eax, ecx
+      shl     eax, 2
+      add     eax, ecx
+      add     eax, eax
+      sub     edx, eax
+      mov     eax, edx
+      mov     [rbp-0x1c], eax
+      cmp     [rbp-0x1c], 2
+      jg      block5
+    block4:
+      mov     eax, [rbp-0x1c]
+      movsxd  rdx, eax
+      mov     rax, rdx
+      add     rax, rax
+      add     rax, rdx
+      lea     rdx, [SUFFIXES]; "st"
+      add     rax, rdx
+      mov     [rbp-0x10], rax
+    block5:
+      mov     rax, [rbp-0x28]
+      mov     esi, [rax+8]
+      mov     rcx, [rbp-0x30]
+      mov     rdx, [rbp-0x10]
+      mov     eax, [rbp-0x20]
+      mov     r8d, esi
+      mov     esi, eax
+      lea     rdi, [mem2]; "%5d%s %s is %d\n"
+      mov     eax, 0
+      call    printf@plt.sec
+      mov     rax, [rbp-0x18]
+      mov     [rbp-8], rax
+      mov     rax, [rbp-0x28]
+      mov     [rbp-0x18], rax
+      mov     rax, [rbp-0x28]
+      mov     rdx, [rax]
+      mov     rax, [rbp-8]
+      xor     rax, rdx
+      mov     [rbp-0x28], rax
+      add     [rbp-0x20], 1
+    block6:
+      cmp     [rbp-0x28], 0
+      jne     block1
+    block7:
+      leave
+      ret

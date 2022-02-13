@@ -1,0 +1,64 @@
+"main":
+  "asm": |
+    main:
+      endbr64
+      push    rbp
+      mov     rbp, rsp
+      push    rbx
+      sub     rsp, 0x18
+      mov     [rbp-0x15], 1
+    block1:
+      mov     rax, [stdin]
+      mov     rdi, rax
+      call    getc@plt.sec
+      mov     [rbp-0x14], eax
+      cmp     [rbp-0x14], -1
+      je      block7
+    block2:
+      call    __ctype_b_loc@plt.sec
+      mov     rax, [rax]
+      mov     edx, [rbp-0x14]
+      movsxd  rdx, edx
+      add     rdx, rdx
+      add     rax, rdx
+      movzx   eax, [rax]
+      movzx   eax, ax
+      and     eax, 0x2000
+      test    eax, eax
+      je      block4
+    block3:
+      mov     rdx, [stdout]
+      mov     eax, [rbp-0x14]
+      mov     rsi, rdx
+      mov     edi, eax
+      call    putc@plt.sec
+      mov     [rbp-0x15], 1
+      jmp     block1
+    block4:
+      cmp     [rbp-0x15], 0
+      je      block6
+    block5:
+      mov     rbx, [stdout]
+      mov     eax, [rbp-0x14]
+      mov     edi, eax
+      call    toupper@plt.sec
+      mov     rsi, rbx
+      mov     edi, eax
+      call    putc@plt.sec
+      mov     [rbp-0x15], 0
+      jmp     block1
+    block6:
+      mov     rbx, [stdout]
+      mov     eax, [rbp-0x14]
+      mov     edi, eax
+      call    tolower@plt.sec
+      mov     rsi, rbx
+      mov     edi, eax
+      call    putc@plt.sec
+      jmp     block1
+    block7:
+      mov     eax, 0
+      add     rsp, 0x18
+      pop     rbx
+      pop     rbp
+      ret

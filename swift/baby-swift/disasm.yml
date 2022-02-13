@@ -1,0 +1,458 @@
+"$s6binary4meetyS2dF":
+  "asm": |
+    $s6binary4meetyS2dF:
+      push    rbp
+      mov     rbp, rsp
+      push    r13
+      sub     rsp, 0x118
+      movsd   [rbp-0x88], xmm0
+      xor     esi, esi
+      lea     rdi, [rbp-0x10]
+      mov     edx, 8
+      call    memset@plt
+      xor     esi, esi
+      lea     rdi, [rbp-0x18]
+      mov     edx, 8
+      call    memset@plt
+      xor     esi, esi
+      lea     rdi, [rbp-0x20]
+      mov     edx, 8
+      call    memset@plt
+      xor     esi, esi
+      lea     rdi, [rbp-0x38]
+      mov     edx, 0x18
+      call    memset@plt
+      xor     esi, esi
+      lea     rdi, [rbp-0x70]
+      mov     edx, 8
+      call    memset@plt
+      xor     esi, esi
+      lea     rdi, [rbp-0x78]
+      mov     edx, 8
+      call    memset@plt
+      xor     esi, esi
+      lea     rdi, [rbp-0x80]
+      mov     edx, 8
+      call    memset@plt
+      movsd   xmm1, [rbp-0x88]
+      movsd   xmm0, [mem1]
+      movsd   [rbp-0x10], xmm1
+      movsd   [rbp-0x18], xmm1
+      ucomisd xmm0, xmm1
+      jbe     block2
+    block1:
+      call    $sSd2piSdvgZ@plt
+      movsd   [rbp-0x98], xmm0
+      call    $sSd2piSdvgZ@plt
+      movsd   xmm1, [rbp-0x88]
+      movsd   xmm2, [mem2]
+      movsd   [rbp-0xa8], xmm2
+      mulsd   xmm0, xmm1
+      call    sin@plt
+      movsd   xmm1, [rbp-0x88]
+      movaps  xmm2, xmm0
+      movsd   xmm0, [rbp-0xa8]
+      movsd   [rbp-0xa0], xmm2
+      subsd   xmm0, xmm1
+      call    $s6binary4meetyS2dF
+      movsd   xmm1, [rbp-0xa0]
+      movaps  xmm2, xmm0
+      movsd   xmm0, [rbp-0x98]
+      mulsd   xmm1, xmm2
+      divsd   xmm0, xmm1
+      movsd   [rbp-0x90], xmm0
+      jmp     block6
+    block2:
+      movsd   xmm1, [rbp-0x88]
+      movsd   xmm0, [mem3]
+      movsd   xmm2, [mem2]
+      subsd   xmm1, xmm2
+      movsd   [rbp-0xd0], xmm1
+      movsd   [rbp-0x18], xmm1
+      movsd   [rbp-0x20], xmm0
+      mov     rdi, [$s6binary1ASaySdGvp]
+      mov     [rbp-0xc8], rdi
+      call    swift_retain@plt
+      mov     rax, [rbp-0xc8]
+      mov     [rbp-0x48], rax
+      lea     rax, [rbp-0x40]
+      mov     [rbp-0xb8], rax
+      lea     rdi, [$sSaySdGMD]
+      call    __swift_instantiateConcreteTypeFromMangledName
+      mov     [rbp-0xc0], rax
+      call    $sSaySdGSayxGSTsWl
+      mov     rdi, [rbp-0xc0]
+      mov     rsi, rax
+      mov     rax, [rbp-0xb8]
+      lea     r13, [rbp-0x48]
+      call    $sSTsE10enumerateds18EnumeratedSequenceVyxGyF@plt
+      lea     rdi, [rbp-0x48]
+      call    $sSaySdGWOh
+      mov     rax, [rbp-0x40]
+      mov     [rbp-0x50], rax
+      lea     rax, [rbp-0x38]
+      mov     [rbp-0xb0], rax
+      lea     rdi, [$ss18EnumeratedSequenceVySaySdGGMD]
+      call    __swift_instantiateConcreteTypeFromMangledName
+      mov     rdi, rax
+      mov     rax, [rbp-0xb0]
+      lea     r13, [rbp-0x50]
+      call    $ss18EnumeratedSequenceV12makeIteratorAB0D0Vyx_GyF@plt
+    block3:
+      lea     rax, [rbp-0x68]
+      mov     [rbp-0xe8], rax
+      lea     rdi, [$ss18EnumeratedSequenceV8IteratorVySaySdG_GMD]
+      call    __swift_instantiateConcreteTypeFromMangledName
+      mov     rdi, rax
+      mov     rax, [rbp-0xe8]
+      lea     r13, [rbp-0x38]
+      call    $ss18EnumeratedSequenceV8IteratorV4nextSi6offset_7ElementQz7elementtSgyF@plt
+      mov     rax, [rbp-0x68]
+      mov     [rbp-0xe0], rax
+      mov     rax, [rbp-0x60]
+      mov     [rbp-0xd8], rax
+      mov     al, [rbp-0x58]
+      test    al, 1
+      jne     block5
+    block4:
+      mov     rax, [rbp-0xe0]
+      mov     rcx, [rbp-0xd8]
+      movq    xmm0, rcx
+      mov     [rbp-0xf8], rax
+      movsd   [rbp-0xf0], xmm0
+      movsd   xmm1, [rbp-0xd0]
+      mov     rax, [rbp-0xf8]
+      movsd   xmm0, [rbp-0xf0]
+      movsd   xmm2, [mem2]
+      mov     [rbp-0x78], rax
+      movsd   [rbp-0x80], xmm0
+      cvtsi2sd xmm3, rax
+      addsd   xmm1, xmm3
+      addsd   xmm1, xmm2
+      divsd   xmm0, xmm1
+      addsd   xmm0, [rbp-0x20]
+      movsd   [rbp-0x20], xmm0
+      jmp     block3
+    block5:
+      lea     rdi, [rbp-0x38]
+      call    $ss18EnumeratedSequenceV8IteratorVySaySdG_GWOh
+      mov     rdi, [$s6binary1ASaySdGvp]
+      call    $sSa5countSivgSd_Tg5@plt
+      movsd   xmm0, [rbp-0xd0]
+      movsd   xmm1, [mem1]
+      cvtsi2sd xmm2, rax
+      addsd   xmm0, xmm2
+      subsd   xmm0, xmm1
+      movsd   [rbp-0x108], xmm0
+      movsd   [rbp-0x70], xmm0
+      call    $sSd2piSdvgZ@plt
+      movaps  xmm1, xmm0
+      movsd   xmm0, [mem1]
+      movsd   [rbp-0x118], xmm0
+      movsd   xmm0, [mem4]
+      mulsd   xmm0, xmm1
+      call    sqrt@plt
+      movsd   xmm1, [rbp-0xd0]
+      movsd   xmm2, [rbp-0x118]
+      movaps  xmm3, xmm0
+      movsd   xmm0, [rbp-0x108]
+      movsd   [rbp-0x110], xmm3
+      addsd   xmm1, xmm2
+      call    pow@plt
+      movsd   xmm2, [rbp-0x110]
+      movsd   xmm1, [rbp-0x108]
+      movaps  xmm3, xmm0
+      movsd   xmm0, [mem5]
+      mulsd   xmm2, xmm3
+      movsd   [rbp-0x100], xmm2
+      subsd   xmm0, xmm1
+      call    exp@plt
+      movaps  xmm1, xmm0
+      movsd   xmm0, [rbp-0x100]
+      mulsd   xmm0, xmm1
+      mulsd   xmm0, [rbp-0x20]
+      movsd   [rbp-0x90], xmm0
+    block6:
+      movsd   xmm0, [rbp-0x90]
+      add     rsp, 0x118
+      pop     r13
+      pop     rbp
+      ret
+"main":
+  "asm": |
+    main:
+      push    rbp
+      mov     rbp, rsp
+      sub     rsp, 0x180
+      xor     esi, esi
+      lea     rdi, [rbp-0x10]
+      mov     edx, 0x10
+      call    memset@plt
+      xor     esi, esi
+      lea     rdi, [rbp-0x28]
+      mov     edx, 8
+      call    memset@plt
+      mov     rsi, [$sSdN]
+      mov     edi, 8
+      call    $ss27_allocateUninitializedArrayySayxG_BptBwlF@plt
+      mov     rdi, rax
+      mov     [rbp-0x60], rdx
+      mov     rsi, [$sSdN]
+      movsd   xmm0, [mem1]
+      movsd   xmm1, [mem2]
+      movsd   xmm2, [mem3]
+      movsd   xmm3, [mem4]
+      movsd   xmm4, [mem5]
+      movsd   xmm5, [mem6]
+      movsd   xmm6, [mem7]
+      movsd   xmm7, [mem8]
+      movsd   [rdx], xmm7
+      movsd   [rdx+8], xmm6
+      movsd   [rdx+0x10], xmm5
+      movsd   [rdx+0x18], xmm4
+      movsd   [rdx+0x20], xmm3
+      movsd   [rdx+0x28], xmm2
+      movsd   [rdx+0x30], xmm1
+      movsd   [rdx+0x38], xmm0
+      call    $ss27_finalizeUninitializedArrayySayxGABnlF
+      mov     [$s6binary1ASaySdGvp], rax
+      mov     edi, 1
+      call    $ss27_allocateUninitializedArrayySayxG_BptBwlFyp_Tg5@plt
+      mov     [rbp-0x58], rax
+      mov     [rbp-0x50], rdx
+      xor     edx, edx
+      lea     rdi, [mem9]; "\u0393 "
+      mov     esi, 3
+      call    $sSS21_builtinStringLiteral17utf8CodeUnitCount7isASCIISSBp_BwBi1_tcfC@plt
+      mov     rdi, [rbp-0x58]
+      mov     rcx, rax
+      mov     rax, rdx
+      mov     rdx, [rbp-0x50]
+      mov     rsi, [$sypN]
+      add     rsi, 8
+      mov     r8, [$sSSN]
+      mov     [rdx+0x18], r8
+      mov     [rdx], rcx
+      mov     [rdx+8], rax
+      call    $ss27_finalizeUninitializedArrayySayxGABnlF
+      mov     [rbp-0x30], rax
+      xor     eax, eax
+      mov     esi, eax
+      lea     rdi, [mem10]
+      mov     edx, 1
+      call    $sSS21_builtinStringLiteral17utf8CodeUnitCount7isASCIISSBp_BwBi1_tcfC@plt
+      mov     [rbp-0x48], rax
+      mov     [rbp-0x38], rdx
+      call    $ss5print_9separator10terminatoryypd_S2StFfA0_
+      mov     rcx, [rbp-0x48]
+      mov     r8, [rbp-0x38]
+      mov     rdi, [rbp-0x30]
+      mov     rsi, rax
+      mov     [rbp-0x40], rdx
+      call    $ss5print_9separator10terminatoryypd_S2StF@plt
+      mov     rdi, [rbp-0x40]
+      call    swift_bridgeObjectRelease@plt
+      mov     rdi, [rbp-0x38]
+      call    swift_bridgeObjectRelease@plt
+      mov     rdi, [rbp-0x30]
+      call    swift_release@plt
+    block1:
+      call    $ss8readLine16strippingNewlineSSSgSb_tFfA_
+      movzx   edi, al
+      call    $ss8readLine16strippingNewlineSSSgSb_tF@plt
+      mov     [rbp-0x70], rdx
+      mov     [rbp-0x68], rax
+      cmp     rdx, 0
+      je      block3
+    block2:
+      mov     rax, [rbp-0x70]
+      mov     rcx, [rbp-0x68]
+      mov     [rbp-0x80], rcx
+      mov     [rbp-0x78], rax
+      jmp     block4
+    block3:
+      xor     eax, eax
+      add     rsp, 0x180
+      pop     rbp
+      ret
+    block4:
+      mov     rax, [rbp-0x80]
+      mov     rdi, [rbp-0x78]
+      mov     [rbp-0x98], rdi
+      mov     [rbp-0xa0], rax
+      mov     [rbp-0x10], rax
+      mov     [rbp-8], rdi
+      call    swift_bridgeObjectRetain@plt
+      mov     rcx, [rbp-0xa0]
+      mov     rax, [rbp-0x98]
+      mov     [rbp-0x20], rcx
+      mov     [rbp-0x18], rax
+      lea     rax, [rbp-0x20]
+      mov     [rbp-0x90], rax
+      call    $sS2SSysWl
+      mov     rdi, [rbp-0x90]
+      mov     rdx, rax
+      mov     rsi, [$sSSN]
+      call    $sSdySdSgxcSyRzlufC@plt
+      mov     [rbp-0x88], rax
+      test    dl, 1
+      jne     block6
+    block5:
+      mov     rax, [rbp-0x88]
+      movq    xmm0, rax
+      movsd   [rbp-0xa8], xmm0
+      jmp     block7
+    block6:
+      mov     edi, 1
+      call    $ss27_allocateUninitializedArrayySayxG_BptBwlFyp_Tg5@plt
+      mov     [rbp-0xd8], rax
+      mov     [rbp-0xd0], rdx
+      lea     rdi, [mem11]; "Invalid."
+      mov     esi, 8
+      mov     edx, 1
+      call    $sSS21_builtinStringLiteral17utf8CodeUnitCount7isASCIISSBp_BwBi1_tcfC@plt
+      mov     rdi, [rbp-0xd8]
+      mov     rcx, rax
+      mov     rax, rdx
+      mov     rdx, [rbp-0xd0]
+      mov     rsi, [$sypN]
+      add     rsi, 8
+      mov     r8, [$sSSN]
+      mov     [rdx+0x18], r8
+      mov     [rdx], rcx
+      mov     [rdx+8], rax
+      call    $ss27_finalizeUninitializedArrayySayxGABnlF
+      mov     [rbp-0xb0], rax
+      call    $ss5print_9separator10terminatoryypd_S2StFfA0_
+      mov     [rbp-0xc8], rax
+      mov     [rbp-0xb8], rdx
+      call    $ss5print_9separator10terminatoryypd_S2StFfA1_
+      mov     rsi, [rbp-0xc8]
+      mov     rdi, [rbp-0xb0]
+      mov     rcx, rax
+      mov     r8, rdx
+      mov     rdx, [rbp-0xb8]
+      mov     [rbp-0xc0], r8
+      call    $ss5print_9separator10terminatoryypd_S2StF@plt
+      mov     rdi, [rbp-0xc0]
+      call    swift_bridgeObjectRelease@plt
+      mov     rdi, [rbp-0xb8]
+      call    swift_bridgeObjectRelease@plt
+      mov     rdi, [rbp-0xb0]
+      call    swift_release@plt
+      jmp     block8
+    block7:
+      movsd   xmm0, [rbp-0xa8]
+      movsd   [rbp-0x148], xmm0
+      movsd   [rbp-0x28], xmm0
+      mov     edi, 1
+      call    $ss27_allocateUninitializedArrayySayxG_BptBwlFyp_Tg5@plt
+      mov     [rbp-0x100], rax
+      mov     [rbp-0x108], rdx
+      lea     rdi, [mem12]; "= %.6f"
+      mov     esi, 6
+      mov     edx, 1
+      call    $sSS21_builtinStringLiteral17utf8CodeUnitCount7isASCIISSBp_BwBi1_tcfC@plt
+      mov     [rbp-0x128], rax
+      mov     [rbp-0x120], rdx
+      lea     rdi, [$ss7CVarArg_pMD]
+      call    __swift_instantiateConcreteTypeFromMangledName
+      mov     rsi, rax
+      mov     [rbp-0x130], rsi
+      mov     edi, 1
+      call    $ss27_allocateUninitializedArrayySayxG_BptBwlF@plt
+      movsd   xmm0, [rbp-0x148]
+      mov     [rbp-0x138], rax
+      mov     [rbp-0x140], rdx
+      call    $s6binary4meetyS2dF
+      mov     rdx, [rbp-0x140]
+      mov     rdi, [rbp-0x138]
+      mov     rsi, [rbp-0x130]
+      mov     rax, [$sSds7CVarArgsWP]
+      mov     rcx, [$sSdN]
+      mov     [rdx+0x18], rcx
+      mov     [rdx+0x20], rax
+      movsd   [rdx], xmm0
+      call    $ss27_finalizeUninitializedArrayySayxGABnlF
+      mov     rdi, [rbp-0x128]
+      mov     rsi, [rbp-0x120]
+      mov     rdx, rax
+      call    $sSS10FoundationE6format_S2Sh_s7CVarArg_pdtcfC@plt
+      mov     rdi, [rbp-0x120]
+      mov     [rbp-0x118], rax
+      mov     [rbp-0x110], rdx
+      call    swift_bridgeObjectRelease@plt
+      mov     rcx, [rbp-0x118]
+      mov     rax, [rbp-0x110]
+      mov     rdx, [rbp-0x108]
+      mov     rdi, [rbp-0x100]
+      mov     rsi, [$sypN]
+      add     rsi, 8
+      mov     r8, [$sSSN]
+      mov     [rdx+0x18], r8
+      mov     [rdx], rcx
+      mov     [rdx+8], rax
+      call    $ss27_finalizeUninitializedArrayySayxGABnlF
+      mov     [rbp-0xe0], rax
+      call    $ss5print_9separator10terminatoryypd_S2StFfA0_
+      mov     [rbp-0xf8], rax
+      mov     [rbp-0xe8], rdx
+      call    $ss5print_9separator10terminatoryypd_S2StFfA1_
+      mov     rsi, [rbp-0xf8]
+      mov     rdi, [rbp-0xe0]
+      mov     rcx, rax
+      mov     r8, rdx
+      mov     rdx, [rbp-0xe8]
+      mov     [rbp-0xf0], r8
+      call    $ss5print_9separator10terminatoryypd_S2StF@plt
+      mov     rdi, [rbp-0xf0]
+      call    swift_bridgeObjectRelease@plt
+      mov     rdi, [rbp-0xe8]
+      call    swift_bridgeObjectRelease@plt
+      mov     rdi, [rbp-0xe0]
+      call    swift_release@plt
+    block8:
+      mov     edi, 1
+      call    $ss27_allocateUninitializedArrayySayxG_BptBwlFyp_Tg5@plt
+      mov     [rbp-0x178], rax
+      mov     [rbp-0x170], rdx
+      xor     edx, edx
+      lea     rdi, [mem9]; "\u0393 "
+      mov     esi, 3
+      call    $sSS21_builtinStringLiteral17utf8CodeUnitCount7isASCIISSBp_BwBi1_tcfC@plt
+      mov     rdi, [rbp-0x178]
+      mov     rcx, rax
+      mov     rax, rdx
+      mov     rdx, [rbp-0x170]
+      mov     rsi, [$sypN]
+      add     rsi, 8
+      mov     r8, [$sSSN]
+      mov     [rdx+0x18], r8
+      mov     [rdx], rcx
+      mov     [rdx+8], rax
+      call    $ss27_finalizeUninitializedArrayySayxGABnlF
+      mov     [rbp-0x150], rax
+      xor     eax, eax
+      mov     esi, eax
+      lea     rdi, [mem10]
+      mov     edx, 1
+      call    $sSS21_builtinStringLiteral17utf8CodeUnitCount7isASCIISSBp_BwBi1_tcfC@plt
+      mov     [rbp-0x168], rax
+      mov     [rbp-0x158], rdx
+      call    $ss5print_9separator10terminatoryypd_S2StFfA0_
+      mov     rcx, [rbp-0x168]
+      mov     r8, [rbp-0x158]
+      mov     rdi, [rbp-0x150]
+      mov     rsi, rax
+      mov     [rbp-0x160], rdx
+      call    $ss5print_9separator10terminatoryypd_S2StF@plt
+      mov     rdi, [rbp-0x160]
+      call    swift_bridgeObjectRelease@plt
+      mov     rdi, [rbp-0x158]
+      call    swift_bridgeObjectRelease@plt
+      mov     rdi, [rbp-0x150]
+      call    swift_release@plt
+      mov     rdi, [rbp-0x98]
+      call    swift_bridgeObjectRelease@plt
+      jmp     block1
+    block9:

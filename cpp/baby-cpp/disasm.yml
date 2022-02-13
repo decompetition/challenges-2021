@@ -1,0 +1,97 @@
+"main":
+  "asm": |
+    main:
+      endbr64
+      push    rbp
+      mov     rbp, rsp
+      sub     rsp, 0x20
+      mov     [rbp-0x14], edi
+      mov     [rbp-0x20], rsi
+      cmp     [rbp-0x14], 2
+      je      block2
+    block1:
+      lea     rsi, [mem1]; "USAGE: ./grade n"
+      lea     rdi, [_ZSt4cerr]
+      call    _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@plt.sec
+      mov     rdx, rax
+      mov     rax, [_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_]
+      mov     rsi, rax
+      mov     rdi, rdx
+      call    _ZNSolsEPFRSoS_E@plt.sec
+      mov     edi, 2
+      call    exit@plt.sec
+    block2:
+      mov     rax, [rbp-0x20]
+      add     rax, 8
+      mov     rax, [rax]
+      mov     rdi, rax
+      call    atoi@plt.sec
+      mov     [rbp-4], eax
+      mov     [rbp-0xc], 1
+      cmp     [rbp-4], 0
+      jg      block4
+    block3:
+      lea     rsi, [mem2]; "Don't be so negative."
+      lea     rdi, [_ZSt4cerr]
+      call    _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@plt.sec
+      mov     rdx, rax
+      mov     rax, [_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_]
+      mov     rsi, rax
+      mov     rdi, rdx
+      call    _ZNSolsEPFRSoS_E@plt.sec
+      mov     edi, 2
+      call    exit@plt.sec
+    block4:
+      mov     eax, [rbp-4]
+      mov     edi, eax
+      call    _ZSt4sqrtIiEN9__gnu_cxx11__enable_ifIXsrSt12__is_integerIT_E7__valueEdE6__typeES3_
+      cvttsd2si eax, xmm0
+      mov     [rbp-8], eax
+    block5:
+      cmp     [rbp-8], 1
+      jle     block9
+    block6:
+      mov     eax, [rbp-4]
+      cdq
+      idiv    [rbp-8]
+      mov     eax, edx
+      test    eax, eax
+      jne     block8
+    block7:
+      mov     eax, [rbp-4]
+      cdq
+      idiv    [rbp-8]
+      add     [rbp-0xc], eax
+      mov     eax, [rbp-8]
+      add     [rbp-0xc], eax
+    block8:
+      sub     [rbp-8], 1
+      jmp     block5
+    block9:
+      mov     eax, [rbp-0xc]
+      cmp     eax, [rbp-4]
+      jne     block11
+    block10:
+      lea     rsi, [mem3]; "Perfect!"
+      lea     rdi, [_ZSt4cout]
+      call    _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@plt.sec
+      mov     rdx, rax
+      mov     rax, [_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_]
+      mov     rsi, rax
+      mov     rdi, rdx
+      call    _ZNSolsEPFRSoS_E@plt.sec
+      mov     eax, 0
+      jmp     block12
+    block11:
+      lea     rsi, [mem4]; "Needs improvement."
+      lea     rdi, [_ZSt4cout]
+      call    _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@plt.sec
+      mov     rdx, rax
+      mov     rax, [_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_]
+      mov     rsi, rax
+      mov     rdi, rdx
+      call    _ZNSolsEPFRSoS_E@plt.sec
+      mov     eax, 1
+    block12:
+      leave
+      ret
