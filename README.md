@@ -142,7 +142,7 @@ Somehow, this produces over three hundred lines of assembly.
 Takes a number and a (temperature) unit as command line arguments, then prints
 it converted to all the units it knows about.  Understands
 [Kelvin](https://en.wikipedia.org/wiki/Kelvin),
-[Fahrenheit]https://en.wikipedia.org/wiki/Fahrenheit, and
+[Fahrenheit](https://en.wikipedia.org/wiki/Fahrenheit), and
 [Celsius](https://en.wikipedia.org/wiki/Celsius).
 This was originally going to be the `baby-nim` challenge.  Then I saw the
 assembly code...
@@ -171,7 +171,7 @@ It uses a list of letters stored in a [compact binary heap](https://en.wikipedia
 A [SKATS](https://en.wikipedia.org/wiki/SKATS) encoder and decoder.  It
 translates [Hangul script](https://en.wikipedia.org/wiki/Hangul) to an encoding
 in [Latin script](https://en.wikipedia.org/wiki/Latin_script) or vice versa.
-It can be used alongside `endeavour` to get a full Korean-to-Morse translation
+It can be used alongside `endeavour` to get a full Korean-to-Morse encoder
 like in [the movie](https://en.wikipedia.org/wiki/Parasite_%402019_film%41).
 
 
